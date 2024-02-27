@@ -1,0 +1,316 @@
+/* Navbar */ 
+.navContainer{
+    position: fixed;
+    width: 100%;
+    padding: 15px 200px !important; 
+    background-color: #f8f7f4;
+    z-index: 1000; 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    border-radius: 15px;
+}
+.logo{
+    width: 5rem;
+    height: auto;
+    margin-top: -15px;
+    margin-left: -6rem;
+}
+.nav{
+    padding-bottom: 10px;
+}
+.navJoin{
+    background-color: orange;
+    border-radius: 3px;
+    margin-left: 180px;
+    transition: all 300ms;
+}
+.navJoin:hover{
+    border-radius: 15px;
+    color: darkorange;
+}
+
+.navMenuText{
+    padding-top: 1rem;
+    color: black;
+}
+
+.navMenuText:hover{
+    color: darkorange;
+}
+
+.navMenuTextJoin{
+    color: white; 
+}
+
+.navMenuTextJoin:hover{
+    color:white;
+}
+
+.searchHome{
+    margin-left: 120px;
+    border-radius: 20px;
+    padding-left: 10px;
+    width: 300px;
+}
+
+/* MainInformation */
+.description {
+    font-size: 18px; 
+    font-weight: bold;
+  }
+/* Slider */
+.carousel-item img {
+    margin: 0 auto;
+  }
+  .carousel-inner{
+    padding-top: 10rem;
+  }
+  /*Cartas*/
+.cartas-container {
+    padding-top: 5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+.card {
+    width: 20rem; /* Ancho de cada carta */
+    margin-left: 1.3rem;
+  }
+  .btn-primary {
+    background-color: orange;
+    color: white;
+    border-color: orange;
+  }
+.btn-primary:hover {
+    background-color: darkorange;
+    border-color: darkorange;
+  }
+  /*Footer*/
+.logs {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .logop {
+    width: 50px;
+    height: auto;
+    margin-left: 10px;
+  }
+  
+  .instagram-logo {
+    width: 40px;
+    height: auto;
+    margin-left: 10px;
+  }
+  
+.navbar {
+    padding-top: 2rem;
+  }  
+
+
+
+
+
+
+
+
+
+/*.banner{
+    background-image: url('banner.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    width: 80%;
+    height: 450px; 
+    margin-left: 10%;
+}
+.bannerBlur{
+    backdrop-filter: blur(5px);
+    height: 100%;
+}
+.bannerTextSpace{
+    width: 50%;
+    text-align: center;
+    padding: 10% 1%;
+    height: 100%;
+}
+.bannerText{
+    color: white;
+    font-size: 30px;
+    text-align: center;
+}
+.bannerButton{
+    border: 0;
+    background-color:#f87e17;
+    border-radius: 5px;
+    padding: 5px 15px;
+    color: white;
+    transition: all 300ms;
+}
+.bannerButton:hover{
+    border: 0;
+    background-color: #f87e17; 
+    border-radius: 20px;
+    padding: 5px 15px;
+    color: white;
+}
+/* Slider 
+.sliderQuincho{
+    display: grid;
+    justify-content: space-around;   
+}
+.imageQuincho{
+    width: 300px;
+    height: auto;
+    margin: 40px;
+    border-radius: 5%;
+}
+/* Access */
+.logo-login{
+    width: 190px;
+    height: 190px;      
+}
+.m-container * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+.m-container{
+    background-image: url('/src/image/fondo_login.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    margin: 0; 
+    overflow-y: auto;
+}
+.container{
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    position: relative;
+}
+.back-box{
+    width: 100%;
+    margin-top: 2%;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;    
+    background-color: #350305;
+    opacity: 90%;
+    border-radius: 10px;
+    border: 2px solid #f8f7f4;
+} 
+.back-box div{
+    margin: 100px 40px;
+    color:#f8f7f4;
+    transition: all 500ms;
+}
+.back-box div p, .back-box div button{
+    margin-top: 20px;
+}
+.back-box div h3{
+    font-weight: 400;
+    font-size: 26px;
+    margin-left: 25px;
+}
+.back-box button{
+    padding: 10px 40px;
+    border: 2px solid #f8f7f4;
+    background-color: transparent;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #f8f7f4;
+    outline: none;
+    transition: all 300ms;
+    margin-left: 55px;
+}
+.back-box button:hover{
+    background-color: #f8f7f4;
+    color: #f87e17;
+}
+.front-box{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 380px;
+    position: relative;
+    top: -185px;   
+    transition: left 500ms cubic-bezier(0.175, 0.885, 0.320, 1.275);
+}
+.front-box form{
+    width: 100%;
+    padding: 10px 20px 20px 30px;
+    background-color: #f8f7f4;
+    position: absolute;
+    border-radius: 10px;
+}
+.front-box form h2{
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 50px;
+    color: #f87e17;
+}
+.front-box form input{
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    padding: 5px;    
+    border: none;
+    background-color: #f2f2f2;
+    font-size: 16px;
+    outline: none;
+}
+.front-box form button{
+    align-items: center;
+    padding: 10px 40px;
+    margin-top: 20px;
+    margin-left: 100px;
+    border: none;
+    font-size: 14px;
+    background-color: #f87e17;
+    color: #f8f7f4;
+    cursor: pointer;
+    outline: none;
+}
+.login{
+    opacity: 1;
+    display: block;
+    height: 400px;      
+}
+
+.register{
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    main {
+        margin-top: 50px;
+    }
+    .back-box {
+        max-width: 350px;
+        height: 300px;
+        flex-direction: column;
+        margin: auto;
+    }
+    .back-box div {
+        margin: 0px;
+        position: absolute;
+    }
+    .front-box {
+        top: -10px;
+        left: -5px;
+        margin: auto;
+    }
+    .front-box form {
+        position: relative;
+    }
+}
