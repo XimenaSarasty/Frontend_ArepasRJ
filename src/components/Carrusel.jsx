@@ -9,6 +9,7 @@ const Carrusel = () => {
           <img src="/src/assets/arepaa.png" className="d-block w-50" alt="Arepa-1" />
           <div className="carousel-caption">
             <p className="description">¡Preparate para saborear</p>
+
             <p className="description">nuestros exquisitos productos!</p>
           </div>
           </a>
@@ -18,7 +19,7 @@ const Carrusel = () => {
           <img src="/src/assets/arepp.jpg" className="d-block w-50" alt="arepa-2" />
           <div className="carousel-caption">
             <p className="description">¡Preparate para saborear</p>
-            <p className="description">nuestros exquisitos productos!</p>
+            <p className="description">Nuestros exquisitos productos!</p>
           </div>
           </a>
         </div>
