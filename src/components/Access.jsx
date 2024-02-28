@@ -50,8 +50,10 @@ export const Access = () => {
 
   return (
     <main className="m-container">  
-        {/* Company logo */}        
-        <img src={logoImage} alt="Logo de la empresa" className="logo-login" />     
+        {/* Company logo */}  
+        <a href="/">      
+        <img src={logoImage} alt="Logo de la empresa" className="logo-login" />  
+        </a>   
             <div className="container">                
                 {/* info about access */}
                 <section className="back-box">
