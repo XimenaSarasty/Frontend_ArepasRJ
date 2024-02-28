@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Home } from './pages/Home';
 import { Access } from './components/Access.jsx';
+import Products from './pages/Products.jsx';
 import "./index.css"
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -11,6 +12,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Routes>  
           <Route path='/' element={<Home />} />
           <Route path='/login/register' element={<Access />} />
+          <Route path='/products' element={<Products />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
