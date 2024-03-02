@@ -5,7 +5,6 @@ import { Access } from './components/Access.jsx';
 import Products from './pages/Products.jsx';
 import  AdmView  from './pages/AdmView.jsx'
 import ShoppingSummary from './pages/ShoppingSummary.jsx';
-import PaymentGateway from './pages/PaymentGateway.jsx';
 import "./index.css"
 
 function App() {
@@ -17,8 +16,7 @@ function App() {
             <Route path='/login/register' element={<Access />} />
             <Route path='/products' element={<Products />} />
             <Route path='/admin' element={<AdmView />} />
-            <Route path='/shoppingsummary' element={<ShoppingSummary />} />
-            <Route path='/paymentgateway' element={<PaymentGateway />} />
+            <Route path='/shoppingsummary' element={<ShoppingSummary />} />            
         </Routes>
       </BrowserRouter>
     </>
