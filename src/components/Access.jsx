@@ -1,7 +1,7 @@
 import "../assets/Style.css"
 import logoImage from "../image/Logo.png";
 import BannerWhatsapp from "./BannerWhatsapp";
-import SimpleForm from "./form";
+import SimpleForm from "./Form";
 
 export const Access = () => {
 

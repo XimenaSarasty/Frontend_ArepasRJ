@@ -1,7 +1,7 @@
 import React from 'react';
 import "../assets/Style.css";
 
-const PiePag = () => {
+const Footer = () => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -24,5 +24,5 @@ const PiePag = () => {
     </div>
   )
 }
-export default PiePag;
+export default Footer;
 

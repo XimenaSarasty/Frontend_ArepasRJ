@@ -1,7 +1,7 @@
 import { Navbar } from "../components/Navbar"
 import Carrusel from "../components/Carrusel"
 import CartasInfo from './../components/CartasInfo';
-import Footer from '../components/PiePag'
+import Footer from '../components/Footer'
 
 import BannerWhatsapp from "../components/BannerWhatsapp";
 

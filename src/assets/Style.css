@@ -357,6 +357,52 @@ textarea {
     box-shadow: 0px 1px 10px rgba(0,0,0,0.3);
     z-index: 100;
 }
+/* ShoppingSummary */
+.data_container{
+    max-width: 500px;
+    padding-top: 50px;
+    margin-left: 50px;
+    padding-bottom: 50px;
+}
+.container-ss{
+    display: flex;
+    max-width: 100%;    
+}
+.left-side {
+    flex: 2; 
+    padding: 50px; 
+}  
+.right-side {
+    flex: 1;
+    padding: 50px;  
+    margin-right: 50px;
+}
+.shopping_card{
+   margin-left: 50px;    
+}
+.shipping-value{
+    margin-left: 50px;
+    padding-bottom: 50px;
+}
+.other-departaments{
+    color: red;
+}
+.order-review{
+    max-width: 500px;
+    margin-left: 50px;
+}
+.review-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}  
+.review-item p {
+    margin: 0; 
+}  
+.bold {
+    font-weight: bold;
+}
 
 @media screen and (max-width: 768px) {
     main {
