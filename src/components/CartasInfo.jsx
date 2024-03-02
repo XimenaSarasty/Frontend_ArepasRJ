@@ -105,3 +105,42 @@ const CartasInfo = () => {
 }
 
 export default CartasInfo;
+
+//ESTE ES EL CÓDIGO PARA CUANDO SE CONECTE CON EL BACK Y PUEDA INGRESARSE EL PRODUCTO
+
+// import React, { useState, useEffect } from 'react';
+
+// const CartasInfo = () => {
+//   const [products, setProducts] = useState([]);
+
+//   useEffect(() => {
+//     // Realizar la solicitud a tu backend para obtener los datos
+//     fetch('http://localhost:8080/Products')
+//       .then(response => response.json())
+//       .then(data => setProducts(data))
+//       .catch(error => console.error('Error fetching data:', error));
+//   }, []);
+
+//   return (
+//     <div className="cartas-container">
+//       <div className="row row-cols-1 row-cols-md-4 g-4">
+//         {products.map(product => (
+//           <div key={product.id} className="col">
+//             <div className="card">
+//               <img src={product.image} className="card-img-top" alt="producto" />
+//               <div className="card-body">
+//                 <h5 className="card-title">{product.title}</h5>
+//                 <p className="card-text">{product.description}</p>
+//                 <h2 className="card-price">{`$${product.price}`}</h2>
+//                 <a href={`/Products/${product.id}`} className="btn btn-primary">Ver producto</a>
+//               </div>
+//             </div>
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default CartasInfo;
+
