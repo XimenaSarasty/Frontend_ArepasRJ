@@ -1,6 +1,7 @@
 import "../assets/Style.css"
 import logoImage from "../image/Logo.png";
-import SimpleForm from "./form"; 
+import BannerWhatsapp from "./BannerWhatsapp";
+import SimpleForm from "./Form";
 
 export const Access = () => {
 
@@ -50,8 +51,10 @@ export const Access = () => {
 
   return (
     <main className="m-container">  
-        {/* Company logo */}        
-        <img src={logoImage} alt="Logo de la empresa" className="logo-login" />     
+        {/* Company logo */}  
+        <a href="/">      
+        <img src={logoImage} alt="Logo de la empresa" className="logo-login" />  
+        </a>   
             <div className="container">                
                 {/* info about access */}
                 <section className="back-box">
@@ -59,6 +62,7 @@ export const Access = () => {
                         <h3>¿Ya tienes cuenta?</h3>
                         <p>Inicia sesión para ingresar en la página</p>
                         <button className="btn-login" onClick={loginF}>Iniciar sesión</button>
+                        
                     </div>
                     <div className="back-box-register">
                         <h3>¿Aún no tienes cuenta?</h3>
@@ -73,12 +77,13 @@ export const Access = () => {
                         <h2>Iniciar sesión</h2>
                         <input type="email" placeholder="Correo Electrónico" />
                         <input type="password"  placeholder="Contraseña"/>
-                        <button type="submit">Ingresar</button>                        
+                        <button type="submit">Ingresar</button>                    
                     </form>
                     {/* Register form */}
                     <SimpleForm />
                 </section>
-            </div>            
+            </div> 
+            <BannerWhatsapp/>           
         </main>
      )
 }
