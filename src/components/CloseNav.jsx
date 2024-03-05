@@ -1,8 +1,9 @@
 import "../assets/Style.css"
 import logo from "../image/logo.png";
 import { NavLink } from "react-router-dom";
+import ProfileUser from './../pages/ProfileUser';
 
-export const Navbar = () => {
+export const CloseNav = () => {
   return (
     <header className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
@@ -41,9 +42,15 @@ export const Navbar = () => {
           </form>
           <ul className="navbar-nav">
             <li className="nav-item">
-              <NavLink to="/login/register" className="ingus nav-link btn">
-                Ingresar
-              </NavLink>
+            <div className="dropdown">
+              <button className=" ingus btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Mi Perfil
+              </button>
+              <ul className="dropdown-menu">
+                <li><NavLink to="/user/profile" className="userp dropdown-item">Perfil</NavLink></li>
+                <li><NavLink to="/user/profile" className="userp dropdown-item">Mis Compras</NavLink></li>
+              </ul>
+            </div>
             </li>
           </ul>
         </div>

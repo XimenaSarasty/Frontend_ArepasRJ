@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Importa Link desde react-router-dom
 import { NavLink } from "react-router-dom"
-import logo from "../assets/logo.png"
+import logo from "../image/logo.png"
 import "../assets/Style.css"
 
 const NavAdm = () => {

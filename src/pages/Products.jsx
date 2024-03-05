@@ -1,5 +1,5 @@
 import { Navbar } from '../components/Navbar';
-import PiePag from '../components/PiePag';
+
 import CartasInfo from './../components/CartasInfo';
 
 const Products = () => {
@@ -7,9 +7,9 @@ const Products = () => {
     <>
       <Navbar/>
       <CartasInfo/>
-      <PiePag/>
     </>
   )
 }
 
 export default Products
+  

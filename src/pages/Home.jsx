@@ -1,7 +1,6 @@
 import { Navbar } from "../components/Navbar"
 import Carrusel from "../components/Carrusel"
 import CartasInfo from './../components/CartasInfo';
-import PiePag from "../components/PiePag";
 
 
 export const Home = () => {
@@ -10,7 +9,7 @@ export const Home = () => {
         <Navbar/>
         <Carrusel/>
         <CartasInfo/>
-	      <PiePag/>
+	      
     </>
   )
 }
