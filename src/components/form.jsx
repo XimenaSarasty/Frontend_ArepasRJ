@@ -53,15 +53,42 @@ const SimpleForm = () => {
     }
   };
 
+  const forms = document.querySelectorAll('.needs-validation');
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+
+      form.classList.add('was-validated');
+    }, false);
+  });
+
   return (
-    <form onSubmit={handleSubmit} className="register" id="register">
+    <form onSubmit={handleSubmit} className="register" id="register" noValidate>
       <h2>Registrarse</h2>
-      <input type="text" name="name" value={formData.name} placeholder="Nombres" onChange={handleChange} />
-      <input type="text" name="lastName" value={formData.lastName} placeholder="Apellidos" onChange={handleChange} />
-      <input type="email" name="email" value={formData.email} placeholder="Correo Electrónico" onChange={handleChange} />
-      <input type="password" name="password" value={formData.password} placeholder="Contraseña" onChange={handleChange} />
-      <input type="number" name="phone" value={formData.phone} placeholder="Celular" onChange={handleChange} />
-      <input type="text" name="address" value={formData.address} placeholder="Dirección" onChange={handleChange} />
+      <input type="text" name="name" required value={formData.name} placeholder="Nombres" onChange={handleChange} />
+        <div className='valid-feedback'>Todo bien</div>
+        <div className='invalid-feedback'>Es necesario poner el nombre</div>
+      <input type="text" name="lastName" required value={formData.lastName} placeholder="Apellidos" onChange={handleChange} />
+        <div className='valid-feedback'>Todo bien</div>
+        <div className='invalid-feedback'>Es necesario poner el apellido</div>
+      <input type="email" name="email" required value={formData.email} placeholder="Correo Electrónico" onChange={handleChange} />
+        <div className='valid-feedback'>Todo bien</div>
+        <div className='invalid-feedback'>Es necesario poner el correo electónico</div>
+      <input type="password" name="password" required value={formData.password} placeholder="Contraseña" onChange={handleChange} />
+        <div className='valid-feedback'>Todo bien</div>
+        <div className='invalid-feedback'>Es necesario poner la contraseña</div>
+      <input type="number" name="phone" required value={formData.phone} placeholder="Celular" onChange={handleChange} />
+        <div className='valid-feedback'>Todo bien</div>
+        <div className='invalid-feedback'>Es necesario poner el celular</div>
+      <input type="text" name="address" required value={formData.address} placeholder="Dirección" onChange={handleChange} />
+        <div className='valid-feedback'>Todo bien</div>
+        <div className='invalid-feedback'>Es necesario poner la dirección</div>
+
         <>
           <ReCAPTCHA 
           ref={captcha}
