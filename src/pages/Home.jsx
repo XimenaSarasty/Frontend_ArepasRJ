@@ -14,6 +14,7 @@ export const Home = () => {
         <CartasInfo/>
         <BannerWhatsapp/>
 	      <Footer/>
+
     </>
   )
 }

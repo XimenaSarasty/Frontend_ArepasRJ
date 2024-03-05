@@ -1,69 +1,73 @@
 /* Navbar */ 
-.navContainer{
+.navbar {
+    padding-bottom: 10px;
     position: fixed;
+    z-index: 1000;
     width: 100%;
-    padding: 15px 200px !important; 
-    background-color: #f8f7f4;
-    z-index: 1000; 
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    border-radius: 15px;
-}
-.logo{
+    border-radius: 2rem;
+    padding: 15px 200px !important;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* Agrega una sombra */
+  }
+
+.nav-link:hover {
+    color: darkorange; /* Cambia el color del texto al pasar el mouse sobre los enlaces */
+  }
+  
+  .navbar-collapse {
+    justify-content: flex-end; /* Alinea los elementos a la derecha */
+  }
+  
+  .form-control {
+    width: 270px;
+    border-color: darkorange; /* Cambia el color del borde del campo de búsqueda */
+  }
+
+  .btn-outline-success {
+    color: #ffffff; /* Cambia el color del texto del botón de búsqueda */
+    background-color: orange; /* Cambia el color de fondo del botón de búsqueda */
+    border-color: orange; /* Cambia el color del borde del botón de búsqueda */
+  }
+  
+  .btn-outline-success:hover {
+    background-color: darkorange; /* Cambia el color de fondo del botón al pasar el mouse */
+    border-color: darkorange; /* Cambia el color del borde del botón al pasar el mouse */
+  }
+  
+  .ingus{
+    color: #ffffff; /* Cambia el color del texto del botón de búsqueda */
+    background-color: orange; /* Cambia el color de fondo del botón de búsqueda */
+    border-color: orange; /* Cambia el color del borde del botón de búsqueda */
+  }
+  .ingus:hover{
+    background-color: darkorange; /* Cambia el color de fondo del botón al pasar el mouse */
+    border-color: darkorange; /* Cambia el color del borde del botón al pasar el mouse */
+    color: #ffffff;
+  }
+
+  .logo{
     width: 5rem;
     height: auto;
     margin-top: -15px;
     margin-left: -6rem;
 }
-.nav{
-    padding-bottom: 10px;
-}
-.navJoin{
-    background-color: orange;
-    border-radius: 3px;
-    margin-left: 180px;
-    transition: all 300ms;
-}
-.navJoin:hover{
-    border-radius: 15px;
-    color: darkorange;
-}
-
-.navMenuText{
-    padding-top: 1rem;
-    color: black;
-}
-
-.navMenuText:hover{
-    color: darkorange;
-}
-
-.navMenuTextJoin{
-    color: white; 
-}
-
-.navMenuTextJoin:hover{
-    color:white;
-}
-
-.searchHome{
-    margin-left: 120px;
-    border-radius: 20px;
-    padding-left: 10px;
-    width: 300px;
-}
-
-/* MainInformation */
-.description {
-    font-size: 18px; 
+.bold-text {
     font-weight: bold;
   }
-/* Slider */
+
+  /* Slider */
 .carousel-item img {
     margin: 0 auto;
   }
   .carousel-inner{
     padding-top: 10rem;
   }
+
+/* MainInformation */
+.description {
+    font-size: 18px; 
+    font-weight: bold;
+  }
+
   /*Cartas*/
 .cartas-container {
     padding-top: 5rem;
@@ -85,6 +89,12 @@
     background-color: darkorange;
     border-color: darkorange;
   }
+
+.userp:hover{
+    color: darkorange;
+}
+
+
   /*Footer*/
 .logs {
     display: flex;
@@ -158,64 +168,6 @@ textarea {
     background-color: darkorange;
 }
 
-
-
-
-
-
-
-
-
-
-/*.banner{
-    background-image: url('banner.jpg'); 
-    background-size: cover; 
-    background-position: center; 
-    width: 80%;
-    height: 450px; 
-    margin-left: 10%;
-}
-.bannerBlur{
-    backdrop-filter: blur(5px);
-    height: 100%;
-}
-.bannerTextSpace{
-    width: 50%;
-    text-align: center;
-    padding: 10% 1%;
-    height: 100%;
-}
-.bannerText{
-    color: white;
-    font-size: 30px;
-    text-align: center;
-}
-.bannerButton{
-    border: 0;
-    background-color:#f87e17;
-    border-radius: 5px;
-    padding: 5px 15px;
-    color: white;
-    transition: all 300ms;
-}
-.bannerButton:hover{
-    border: 0;
-    background-color: #f87e17; 
-    border-radius: 20px;
-    padding: 5px 15px;
-    color: white;
-}
-/* Slider 
-.sliderQuincho{
-    display: grid;
-    justify-content: space-around;   
-}
-.imageQuincho{
-    width: 300px;
-    height: auto;
-    margin: 40px;
-    border-radius: 5%;
-}
 /* Access */
 .logo-login{
     width: 190px;
