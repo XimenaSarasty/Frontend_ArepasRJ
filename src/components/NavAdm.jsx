@@ -6,19 +6,61 @@ import "../assets/Style.css"
 
 const NavAdm = () => {
   return (
-    <div>
-      <header className="navContainer d-flex py-3">
-        <Link to="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
-          <img className="logo" src={logo} alt="" />
-        </Link>
-        <div>
-        <ul className="nav">
-          <li className="linkInicio nav-item"><a href="#" className="navMenuText nav-link">Productos Agregados</a></li>
-          <li className="navJoin nav-item"><NavLink href="#" className="navMenuTextJoin nav-link" to="http://localhost:5173" >Cerrar Sesión</NavLink></li>
-        </ul>
+    <header className="navbar navbar-expand-lg navbar-light bg-light">
+      <div className="container-fluid">
+        <NavLink to="/" className="navbar-brand">
+          <img className="logo" src={logo} alt="Logo" />
+        </NavLink>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav me-auto mb-3 mb-lg-0">
+            <li className="nav-item">
+              <NavLink to="/products" className="nav-link bold-text">
+              Productos Agregados
+              </NavLink>
+            </li>
+          <li className="nav-item">
+              <NavLink to="/admin/shipment-fee" className="nav-link bold-text">
+                Domicilios
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to="/contacto" className="nav-link bold-text">
+                Pedidos
+              </NavLink>
+            </li>
+          </ul>
+          <form className="d-flex">
+            <input
+              className="form-control me-2" type="search" placeholder="Busca aquí nuestros productos" aria-label="Search"/>
+              <button className="btn btn-outline-success me-3" type="submit"> Buscar </button>
+          </form>
+          <ul className="navbar-nav">
+            <li className="nav-item">
+            <div className="dropdown">
+              <button className=" ingus btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Mi Perfil
+              </button>
+              <ul className="dropdown-menu">
+                <li><NavLink to="/user/profile" className="userp dropdown-item">Perfil</NavLink></li>
+                <li><NavLink to="/user/profile" className="userp dropdown-item"></NavLink></li>
+              </ul>
+            </div>
+            </li>
+          </ul>
+        </div>
       </div>
-      </header>
-    </div>
+    </header>
   )
 }
 export default NavAdm;

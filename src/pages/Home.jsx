@@ -1,4 +1,4 @@
-import { Navbar } from "../components/Navbar"
+import Navbar from "../components/Navbar";
 import Carrusel from "../components/Carrusel"
 import CartasInfo from './../components/CartasInfo';
 import Footer from '../components/Footer'
@@ -14,7 +14,6 @@ export const Home = () => {
         <CartasInfo/>
         <BannerWhatsapp/>
 	      <Footer/>
-
     </>
   )
 }

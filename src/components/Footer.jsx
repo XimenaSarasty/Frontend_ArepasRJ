@@ -3,7 +3,7 @@ import "../assets/Style.css";
 
 const Footer = () => {
   return (
-    <div>
+    <div className='footerdm'>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
                
@@ -15,9 +15,9 @@ const Footer = () => {
             </ul>
           </div>
           <div className="logs">
-            <a href="https://www.facebook.com"target='_blank'><img className="logop" src="/src/assets/logface.png" alt="logo-facebook" /></a>
-            <a href="https://www.instagram.com" target='_blank'><img className="instagram-logo" src="/src/assets/iglog.png" alt="logo-instagram" /></a>
-            <a href="https://www.tiktok.com/es/" target='_blank'><img className="logop" src="/src/assets/tiklog.png" alt="logo-tiktok" /></a>
+            <a href="https://www.facebook.com"target='_blank'><img className="logop" src="/src/image/logface.png" alt="logo-facebook" /></a>
+            <a href="https://www.instagram.com" target='_blank'><img className="instagram-logo" src="/src/image/iglog.png" alt="logo-instagram" /></a>
+            <a href="https://www.tiktok.com/es/" target='_blank'><img className="logop" src="/src/image/tiklog.png" alt="logo-tiktok" /></a>
           </div>
         </div>
       </nav>

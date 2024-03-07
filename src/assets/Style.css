@@ -96,6 +96,9 @@
 
 
   /*Footer*/
+
+
+
 .logs {
     display: flex;
     justify-content: flex-end;
@@ -121,7 +124,7 @@
   
 /*Subir Foto*/
 .allin{
-    padding-top: 6rem;
+    padding-top: 8rem;
 }
 .agregar-producto-container {
     margin-top: 10rem;
