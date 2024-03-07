@@ -46,7 +46,7 @@ const AgregarProducto = () => {
                 <div className='form-group'>
                     <label className='magenp' htmlFor="tipo">Tipo:</label>
                     <select id="tipo" name="tipo" value={producto.tipo} onChange={handleChange} required>
-                        <option value="Arepa">Arepa</option>
+                        <option value="Productos">Productos</option>
                         <option value="Adiciones">Adiciones</option>
                     </select>
                 </div>
