@@ -1,7 +1,7 @@
 import "../assets/Style.css"
 import logo from "../image/logo.png";
 import { NavLink } from "react-router-dom";
-import ProfileUser from './../pages/ProfileUser';
+import { AddToCartIcon } from '../components/Icons.jsx';
 
 export const CloseNav = () => {
   return (
@@ -35,6 +35,7 @@ export const CloseNav = () => {
               </NavLink>
             </li>
           </ul>
+          
           <form className="d-flex">
             <input
               className="form-control me-2" type="search" placeholder="Busca aquí nuestros productos" aria-label="Search"/>
@@ -46,9 +47,27 @@ export const CloseNav = () => {
               <button className=" ingus btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Mi Perfil
               </button>
-              <ul className="dropdown-menu">
+              <button className="ml-2"
+                // style={{ backgroundColor: isProductInCart ? 'red' : '#09f' }}
+                >
+                <AddToCartIcon />
+                </button>
+                <ul className="dropdown-menu">
                 <li><NavLink to="/user/profile" className="userp dropdown-item">Perfil</NavLink></li>
                 <li><NavLink to="/user/profile" className="userp dropdown-item">Mis Compras</NavLink></li>
+                
+                {/* // onClick={() => {
+                //     isProductInCart
+                //       ? removeFromCart(product)
+                //       : addToCart(product)
+                //   }}
+                // >
+                //   {
+                //     isProductInCart
+                //       ? <RemoveFromCartIcon />
+                //       : 
+               
+                  } */}                
               </ul>
             </div>
             </li>
