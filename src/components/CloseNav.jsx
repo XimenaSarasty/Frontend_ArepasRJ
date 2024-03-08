@@ -1,10 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom'; // Importa Link desde react-router-dom
-import { NavLink } from "react-router-dom"
-import logo from "../image/logo.png"
 import "../assets/Style.css"
+import logo from "../image/logo.png";
+import { NavLink } from "react-router-dom";
+import ProfileUser from './../pages/ProfileUser';
 
-const NavAdm = () => {
+export const CloseNav = () => {
   return (
     <header className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
@@ -26,17 +25,13 @@ const NavAdm = () => {
           <ul className="navbar-nav me-auto mb-3 mb-lg-0">
             <li className="nav-item">
               <NavLink to="/products" className="nav-link bold-text">
-              Productos Agregados
+              Nuestros Productos
               </NavLink>
             </li>
+
           <li className="nav-item">
-              <NavLink to="/admin/shipment-fee" className="nav-link bold-text">
-                Domicilios
-              </NavLink>
-            </li>
-            <li className="nav-item">
               <NavLink to="/contacto" className="nav-link bold-text">
-                Pedidos
+                Contacto
               </NavLink>
             </li>
           </ul>
@@ -53,7 +48,7 @@ const NavAdm = () => {
               </button>
               <ul className="dropdown-menu">
                 <li><NavLink to="/user/profile" className="userp dropdown-item">Perfil</NavLink></li>
-                <li><NavLink to="/user/profile" className="userp dropdown-item"></NavLink></li>
+                <li><NavLink to="/user/profile" className="userp dropdown-item">Mis Compras</NavLink></li>
               </ul>
             </div>
             </li>
@@ -61,6 +56,6 @@ const NavAdm = () => {
         </div>
       </div>
     </header>
-  )
-}
-export default NavAdm;
+  );
+};
+

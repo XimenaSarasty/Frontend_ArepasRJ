@@ -1,5 +1,4 @@
 import BannerWhatsapp from "../components/BannerWhatsapp";
-import { Navbar } from './../components/Navbar';
 import RequestInfo from "../components/RequestInfo";
 import ShippingValue from "../components/ShippingValue";
 import OrderReview from "../components/OrderReview";
@@ -9,6 +8,7 @@ import ShoppingCard from "../components/ShoppingCard";
 // import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
 // import { useState } from 'react';
 // import axios from 'axios';
+import { CloseNav } from '../components/CloseNav';
 
 
 
@@ -45,8 +45,8 @@ const ShoppingSummary = () => {
   return (
     <> 
         <div className="container-ss">
-           {/* Se debe poner el navbar logueado */}
-          <Navbar/>      
+           <CloseNav />
+               
           <div className="left-side mt-5">
             <ShoppingCard/>
             <RequestInfo/>
