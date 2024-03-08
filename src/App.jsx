@@ -9,6 +9,8 @@ import ProfileUser from './pages/ProfileUser.jsx';
 import ShoppingSummary from './pages/ShoppingSummary.jsx';
 import AdmViewNewProd from './pages/AdmViewNewProd.jsx';
 import AdmDomicilio from './pages/AdmDomicilio.jsx';
+import AdmOrder from './pages/AdmOrder.jsx';
+import HomeAdmView from './pages/HomeAdmView.jsx';
 
 function App() {
   return (
@@ -22,7 +24,9 @@ function App() {
             <Route path='/admin/new-product' element={<AdmViewNewProd />} />
             <Route path='/admin/shipment-fee' element={<AdmDomicilio />} />
             <Route path='/user/profile' element={<ProfileUser/>} />
-            <Route path='/shoppingsummary' element={<ShoppingSummary />} />            
+            <Route path='/shoppingsummary' element={<ShoppingSummary />} />     
+            <Route path='/admin/adm-order' element={<AdmOrder />} />
+            <Route path='/admin' element={<HomeAdmView />} />
         </Routes>
       </BrowserRouter>
     </>

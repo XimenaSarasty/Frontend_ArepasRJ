@@ -1,7 +1,6 @@
-import "../assets/Style.css"
+import "../assets/Style.css";
 import logo from "../image/logo.png";
 import { NavLink } from "react-router-dom";
-import ProfileUser from './../pages/ProfileUser';
 
 export const CloseNav = () => {
   return (
@@ -25,11 +24,11 @@ export const CloseNav = () => {
           <ul className="navbar-nav me-auto mb-3 mb-lg-0">
             <li className="nav-item">
               <NavLink to="/products" className="nav-link bold-text">
-              Nuestros Productos
+                Nuestros Productos
               </NavLink>
             </li>
 
-          <li className="nav-item">
+            <li className="nav-item">
               <NavLink to="/contacto" className="nav-link bold-text">
                 Contacto
               </NavLink>
@@ -37,20 +36,40 @@ export const CloseNav = () => {
           </ul>
           <form className="d-flex">
             <input
-              className="form-control me-2" type="search" placeholder="Busca aquí nuestros productos" aria-label="Search"/>
-              <button className="btn btn-outline-success me-3" type="submit"> Buscar </button>
+              className="form-control me-2"
+              type="search"
+              placeholder="Busca aquí nuestros productos"
+              aria-label="Search"
+            />
+            <button className="btn btn-outline-success me-3" type="submit">
+              {" "}
+              Buscar{" "}
+            </button>
           </form>
           <ul className="navbar-nav">
             <li className="nav-item">
-            <div className="dropdown">
-              <button className=" ingus btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Mi Perfil
-              </button>
-              <ul className="dropdown-menu">
-                <li><NavLink to="/user/profile" className="userp dropdown-item">Perfil</NavLink></li>
-                <li><NavLink to="/user/profile" className="userp dropdown-item">Mis Compras</NavLink></li>
-              </ul>
-            </div>
+              <div className="dropdown">
+                <button
+                  className=" ingus btn btn-secondary dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Mi Perfil
+                </button>
+                <ul className="dropdown-menu">
+                  <li>
+                    <NavLink to="/user/profile" className="userp dropdown-item">
+                      Perfil
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/" className="userp dropdown-item">
+                      Mis Compras
+                    </NavLink>
+                  </li>
+                </ul>
+              </div>
             </li>
           </ul>
         </div>
@@ -58,4 +77,3 @@ export const CloseNav = () => {
     </header>
   );
 };
-

@@ -35,7 +35,7 @@ const NavAdm = () => {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/contacto" className="nav-link bold-text">
+              <NavLink to="/admin/adm-order" className="nav-link bold-text">
                 Pedidos
               </NavLink>
             </li>
@@ -52,8 +52,8 @@ const NavAdm = () => {
                 Mi Perfil
               </button>
               <ul className="dropdown-menu">
-                <li><NavLink to="/user/profile" className="userp dropdown-item">Perfil</NavLink></li>
-                <li><NavLink to="/user/profile" className="userp dropdown-item"></NavLink></li>
+                <li><NavLink to="" className="userp dropdown-item">Perfil</NavLink></li>
+                <li><NavLink to="" className="userp dropdown-item"></NavLink></li>
               </ul>
             </div>
             </li>
