@@ -6,7 +6,7 @@ import { CloseNav } from './../components/CloseNav';
 const Products = () => {
   return (
     <>
-     <CloseNav />
+      <CloseNav />
       <CartasInfo/>
       <Footer/>
       <BannerWhatsapp/>

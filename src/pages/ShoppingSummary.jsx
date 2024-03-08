@@ -3,7 +3,7 @@ import RequestInfo from "../components/RequestInfo";
 import ShippingValue from "../components/ShippingValue";
 import OrderReview from "../components/OrderReview";
 import Footer from "../components/Footer";
-import ShoppingCard from "../components/ShoppingCard";
+
 
 // import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
 // import { useState } from 'react';
@@ -48,7 +48,6 @@ const ShoppingSummary = () => {
            <CloseNav />
                
           <div className="left-side mt-5">
-            <ShoppingCard/>
             <RequestInfo/>
           </div>
          
