@@ -20,6 +20,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/login/register' element={<Access />} />
             <Route path='/products' element={<Products />} />
+
             <Route path='/carshop' element={<CarShop />} />
             <Route path='/admin/new-product' element={<AdmViewNewProd />} />
             <Route path='/admin/shipment-fee' element={<AdmDomicilio />} />
