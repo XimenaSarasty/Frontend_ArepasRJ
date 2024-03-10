@@ -47,11 +47,11 @@ export const CloseNav = () => {
               <button className=" ingus btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Mi Perfil
               </button>
-              <button className="ml-2"
-                // style={{ backgroundColor: isProductInCart ? 'red' : '#09f' }}
-                >
-                <AddToCartIcon />
+              <NavLink to="/shoppingcart">
+                <button className="btn btn-primary btn-carrito">
+                  <AddToCartIcon />
                 </button>
+              </NavLink>
                 <ul className="dropdown-menu">
                 <li><NavLink to="/user/profile" className="userp dropdown-item">Perfil</NavLink></li>
                 <li><NavLink to="/user/profile" className="userp dropdown-item">Mis Compras</NavLink></li>

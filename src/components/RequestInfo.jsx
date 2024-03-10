@@ -7,7 +7,7 @@ const RequestInfo = () => {
                 <form className="row g-3 pt-2">
                 <div className="col-md-6">
                     <label htmlFor="inputNames4" className="form-label htmlFor"></label>
-                    <input type="name" className="form-control" id="inputNames4" placeholder="Nombres"/>
+                    <input type="name" className="form-control" id="inputNames4" placeholder="Nombre"/>
                 </div>
                 <div className="col-md-6">
                     <label htmlFor="inputLastName4" className="form-label htmlFor"></label>

@@ -3,7 +3,15 @@ import axios from 'axios';
 import { AddToCartIcon } from '../components/Icons.jsx';
 
 const Products = () => {
+ 
   const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
+
+
+  const buyProducts = (product) => {
+    console.log(product);
+    setCart([...cart, product]);
+  };
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -30,10 +38,7 @@ const Products = () => {
                   <h5 className="card-title">{product.productName}</h5>
                   <p className="card-text">{product.productDescription}</p>
                   <h2 className="card-price">${product.unityPrice}</h2>
-                  <a href={`/Products/${product.idProduct}`} className="btn btn-primary">
-                    Ver producto
-                  </a>
-                  <button>
+                  <button onClick={()=>buyProducts(product)} className='btn btn-primary btn-carrito'>
                     <AddToCartIcon />
                   </button>
                 </div> 
