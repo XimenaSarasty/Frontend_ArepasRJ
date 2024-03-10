@@ -1,58 +1,76 @@
-import { CloseNav } from "../components/CloseNav"
-import { useId } from 'react'
-// import { CartIcon, ClearCartIcon } from './Icons.jsx'
-// import { useCart } from '../hooks/useCart.js'
+import React from 'react'
+import { CloseNav } from '../components/CloseNav'
+import Footer from '../components/Footer'
+// import CartContent from '../components/CartContent'
 
-function CartItem ({ thumbnail, price, title, quantity, addToCart }) {
+const ShoppingCart = () => {
   return (
-    <li>
-      <img
-        
-      />
-      <div>
-        <strong>Combo ArepasRJ</strong> - $16.000
-      </div>
-
-      <footer>
-        <small>
-          Qty: {quantity}
-        </small>
-        <button onClick={addToCart}>+</button>
-      </footer>
-    </li>
+    <>
+      <CloseNav/>
+        {/* <CartContent /> */}
+      <Footer/>
+    </>
   )
 }
 
-const ShoppingCart = () => {
+export default ShoppingCart
 
-  const cartCheckboxId = useId()
-  const { cart, clearCart, addToCart } = useCart()
+//CÓDIGO EXISTENTE QUE NO SIRVE PARA NADA (POR AHORA)
+// import { CloseNav } from "../components/CloseNav"
+// import { useId } from 'react'
+// // import { CartIcon, ClearCartIcon } from './Icons.jsx'
+// // import { useCart } from '../hooks/useCart.js'
 
-  return (
-    <div>
-      <CloseNav />
-      <label className='cart-button' htmlFor={cartCheckboxId}>
-        <CartIcon />
-      </label>
-      <input id={cartCheckboxId} type='checkbox' hidden />
+// function CartItem ({ thumbnail, price, title, quantity, addToCart }) {
+//   return (
+//     <li>
+//       <img
+        
+//       />
+//       <div>
+//         <strong>Combo ArepasRJ</strong> - $16.000
+//       </div>
 
-      <aside className='cart'>
-        {/* <ul>
-            {cart.map(product => (
-            <CartItem
-              key={product.id}
-              addToCart={() => addToCart(product)}
-              {...product} 
-            />
-          ))}
-        </ul>  */}
+//       <footer>
+//         <small>
+//           Qty: {quantity}
+//         </small>
+//         <button onClick={addToCart}>+</button>
+//       </footer>
+//     </li>
+//   )
+// }
 
-        <button onClick={clearCart}>
-          <ClearCartIcon />
-        </button>
-      </aside>
-    </div>
-  );
-};
+// const ShoppingCart = () => {
 
-export default ShoppingCart;
+//   const cartCheckboxId = useId()
+//   const { cart, clearCart, addToCart } = useCart()
+
+//   return (
+//     <div>
+//       <CloseNav />
+//       <label className='cart-button' htmlFor={cartCheckboxId}>
+//         <CartIcon />
+//       </label>
+//       <input id={cartCheckboxId} type='checkbox' hidden />
+
+//       <aside className='cart'>
+//         {/* <ul>
+//             {cart.map(product => (
+//             <CartItem
+//               key={product.id}
+//               addToCart={() => addToCart(product)}
+//               {...product} 
+//             />
+//           ))}
+//         </ul>  */}
+
+//         <button onClick={clearCart}>
+//           <ClearCartIcon />
+//         </button>
+//       </aside>
+//     </div>
+//   );
+// };
+
+// export default ShoppingCart;

@@ -40,6 +40,7 @@ const AgregarProducto = () => {
 
             alert('Producto agregado exitosamente');
             // Puedes realizar otras acciones aquí, como redireccionar a otra página
+            window.location.reload();
         } catch (error) {
             console.error('Error al agregar el producto:', error);
             alert('Ocurrió un error al agregar el producto');
@@ -75,7 +76,6 @@ const AgregarProducto = () => {
                     <div className='form-group'>
                         <label className='price-label' htmlFor="price">Price per unit:</label>
                         <input className='price-input' type="number" id="price" name="price" min="0" step="0.01" value={product.price} onChange={handleChange} required />
-                        {/* <input type="submit" value="Agregar producto" className='submit-button' /> */}
                         <input type="submit" value="Agregar producto" className='submit-button' />
                     </div>
                </form>
