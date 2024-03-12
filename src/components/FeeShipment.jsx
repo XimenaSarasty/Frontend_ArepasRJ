@@ -87,7 +87,7 @@ const FeeShipment = () => {
         />
       </div>
       <div className="domibt col-md-12 mb-4">
-        <button onClick={handleSave} className="my-3 btn btn-primary" style={{ marginLeft: '3rem' }}>Guardar</button>
+        <button onClick={handleSave} className="my-3 btn btn-primary" style={{ marginLeft: '3rem' }}> Guardar</button>
       </div>
     </div>
   );
