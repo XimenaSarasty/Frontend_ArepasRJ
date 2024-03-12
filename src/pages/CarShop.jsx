@@ -6,6 +6,7 @@ const CarShop = () => {
     <div>
       <CloseNav />
       <ProductsAgg />
+
     </div>
   )
 }
