@@ -6,7 +6,7 @@ export const cartContext = createContext();
 const DataProvider = ({ children }) => {
   const [data, setData] = useState([]);  
   const [cart, setCart] = useState([]);  
-
+ 
   useEffect(() => {
     const fetchData = async () => {
       try {

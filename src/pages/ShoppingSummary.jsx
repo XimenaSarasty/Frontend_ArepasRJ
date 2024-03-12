@@ -3,12 +3,12 @@ import RequestInfo from "../components/RequestInfo";
 import ShippingValue from "../components/ShippingValue";
 import OrderReview from "../components/OrderReview";
 import Footer from "../components/Footer";
-
-
+import { CloseNav } from '../components/CloseNav';
+import CartElements from "../components/CartElements";
 // import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
 // import { useState } from 'react';
 // import axios from 'axios';
-import { CloseNav } from '../components/CloseNav';
+
 
 
 
@@ -45,20 +45,21 @@ const ShoppingSummary = () => {
   return (
     <> 
         <div className="container-ss">
-           <CloseNav />
-               
-          <div className="left-side mt-5">
-            <RequestInfo/>
-          </div>
-         
-          <div className="right-side mt-5 mr-2">
-            <ShippingValue/>
-            <OrderReview/>
-          </div>
-          <BannerWhatsapp/> 
-          {/* {preferenceId && <Wallet initialization={{ preferenceId: 'prefenrenceId' }} customization={{ texts:{ valueProp: 'smart_option'}}} />} */}
-        </div>
-        <Footer/>
+            <CloseNav />
+                
+            <div className="left-side mt-5">
+              <CartElements/>
+              <RequestInfo/>
+            </div>
+          
+            <div className="right-side mt-5 mr-2">
+              <ShippingValue/>
+              <OrderReview/>
+            </div>
+            
+            <BannerWhatsapp/>  
+          <Footer/>
+          </div>   
     </>
   )
 }
