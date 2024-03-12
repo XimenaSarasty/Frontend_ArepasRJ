@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { AddToCartIcon } from '../components/Icons.jsx';
+import { cartContext } from '../context/cartContext';
 
 const Products = () => {
  
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState([]);
+  const {cart, setCart} = useContext(cartContext);
 
 
   const buyProducts = (product) => {
-    console.log(product);
-    setCart([...cart, product]);
+    setCart(prevCart => [...prevCart, product]);
   };
 
   useEffect(() => {

@@ -1,76 +1,35 @@
-import React from 'react'
 import { CloseNav } from '../components/CloseNav'
 import Footer from '../components/Footer'
-// import CartContent from '../components/CartContent'
+import CartElements from '../components/CartElements'
+import React, { useContext } from 'react';
+import { cartContext } from '../context/cartContext';
+import PriorOrder from '../components/PriorOrder';
+import BannerWhatsapp from './../components/BannerWhatsapp';
 
 const ShoppingCart = () => {
-  return (
+
+  const { cart } = useContext(cartContext);
+
+  return cart.length > 0 ? (
     <>
       <CloseNav/>
-        {/* <CartContent /> */}
-      <Footer/>
+        <div className="container-ss">
+          
+          <div className="left-side mt-5">
+            <CartElements/>
+          </div>
+          
+          <div className="right-side mt-5 mr-2">
+            <PriorOrder/>
+          </div>
+                  
+          <Footer/>
+        </div>
+      <BannerWhatsapp/>
     </>
+  ): (
+    <h2 className='cart-message-center'>Tu carrito esta vacío</h2>
   )
 }
 
 export default ShoppingCart
-
-//CÓDIGO EXISTENTE QUE NO SIRVE PARA NADA (POR AHORA)
-// import { CloseNav } from "../components/CloseNav"
-// import { useId } from 'react'
-// // import { CartIcon, ClearCartIcon } from './Icons.jsx'
-// // import { useCart } from '../hooks/useCart.js'
-
-// function CartItem ({ thumbnail, price, title, quantity, addToCart }) {
-//   return (
-//     <li>
-//       <img
-        
-//       />
-//       <div>
-//         <strong>Combo ArepasRJ</strong> - $16.000
-//       </div>
-
-//       <footer>
-//         <small>
-//           Qty: {quantity}
-//         </small>
-//         <button onClick={addToCart}>+</button>
-//       </footer>
-//     </li>
-//   )
-// }
-
-// const ShoppingCart = () => {
-
-//   const cartCheckboxId = useId()
-//   const { cart, clearCart, addToCart } = useCart()
-
-//   return (
-//     <div>
-//       <CloseNav />
-//       <label className='cart-button' htmlFor={cartCheckboxId}>
-//         <CartIcon />
-//       </label>
-//       <input id={cartCheckboxId} type='checkbox' hidden />
-
-//       <aside className='cart'>
-//         {/* <ul>
-//             {cart.map(product => (
-//             <CartItem
-//               key={product.id}
-//               addToCart={() => addToCart(product)}
-//               {...product} 
-//             />
-//           ))}
-//         </ul>  */}
-
-//         <button onClick={clearCart}>
-//           <ClearCartIcon />
-//         </button>
-//       </aside>
-//     </div>
-//   );
-// };
-
-// export default ShoppingCart;

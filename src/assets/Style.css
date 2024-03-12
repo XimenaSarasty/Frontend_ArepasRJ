@@ -221,6 +221,7 @@ font-size:small;
     height: 430px; 
   }
   .card-body {
+    margin-left: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -244,6 +245,27 @@ font-size:small;
   margin-left: 1rem;
   max-width: 3rem;
 }
+
+/* Carrito */
+.cartContent {
+  display:flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 0.1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;  
+}
+.cartContent > img {  
+  height: 120px;
+  width: 100px;
+  text-align: center;
+  border-radius: 5px;
+}
+.cart-message-center {
+  text-align: center;
+  margin-top: 40px;
+}
+
 
 /*Footer*/
 .logs {
@@ -282,8 +304,7 @@ font-size:small;
     margin-top: 10rem;
     max-width: 600px;
     margin: 0 auto;
-    padding: 20px;
-    border: 5px solid orange;
+    padding: 20px;   
     border-radius: 5px;
     background-color: white;
 }
@@ -324,11 +345,15 @@ textarea {
 }
 
 /* ShoppingSummary */
+.request-info{
+  border: 1px solid #ccc;
+  border-radius: 5px;  
+}
 .data_container{
-    max-width: 500px;
+    max-width: 800px;
     padding-top: 50px;
     margin-left: 50px;
-    padding-bottom: 50px;
+
 }
 .container-ss{
     display: flex;
@@ -347,8 +372,10 @@ textarea {
    margin-left: 50px;    
 }
 .shipping-value{
+    margin-top: 50px;
     margin-left: 50px;
-    padding-bottom: 50px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 .other-departaments{
     color: red;
@@ -356,6 +383,15 @@ textarea {
 .order-review{
     max-width: 500px;
     margin-left: 50px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.prior-order{
+    margin-top: 50px;
+    max-width: 500px;
+    margin-left: 50px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 .review-item {
     display: flex;

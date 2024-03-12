@@ -1,9 +1,9 @@
 import "../assets/Style.css"
+import BannerWhatsapp from "../components/BannerWhatsapp";
+import SimpleForm from "../components/form";
 import logoImage from "../image/Logo.png";
-import BannerWhatsapp from "./BannerWhatsapp";
-import SimpleForm from "./Form";
 
-export const Access = () => {
+export const RegisterLogin = () => {
 
     const loginF = () => {
         const frontBox = document.querySelector(".front-box");
