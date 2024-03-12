@@ -36,4 +36,3 @@ const OrderReview = () => {
   }
   
   export default OrderReview;
-  
