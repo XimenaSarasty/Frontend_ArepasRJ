@@ -29,13 +29,14 @@ const NavAdm = () => {
               Productos Agregados
               </NavLink>
             </li>
+            
           <li className="nav-item">
               <NavLink to="/admin/shipment-fee" className="nav-link bold-text">
                 Domicilios
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/contacto" className="nav-link bold-text">
+              <NavLink to="/admin/adm-order" className="nav-link bold-text">
                 Pedidos
               </NavLink>
             </li>
@@ -49,11 +50,10 @@ const NavAdm = () => {
             <li className="nav-item">
             <div className="dropdown">
               <button className=" ingus btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Mi Perfil
+                Opciones
               </button>
               <ul className="dropdown-menu">
-                <li><NavLink to="/user/profile" className="userp dropdown-item">Perfil</NavLink></li>
-                <li><NavLink to="/user/profile" className="userp dropdown-item"></NavLink></li>
+                <li><NavLink to="/login/register" className="userp dropdown-item">Cerrar Sesion</NavLink></li>
               </ul>
             </div>
             </li>

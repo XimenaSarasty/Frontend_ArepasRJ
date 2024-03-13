@@ -10,6 +10,7 @@ export const CloseNav = () => {
         <NavLink to="/" className="navbar-brand">
           <img className="logo" src={logo} alt="Logo" />
         </NavLink>
+        
         <button
           className="navbar-toggler"
           type="button"
@@ -26,12 +27,6 @@ export const CloseNav = () => {
             <li className="nav-item">
               <NavLink to="/products" className="nav-link bold-text">
               Nuestros Productos
-              </NavLink>
-            </li>
-
-          <li className="nav-item">
-              <NavLink to="/contacto" className="nav-link bold-text">
-                Contacto
               </NavLink>
             </li>
           </ul>
@@ -54,7 +49,7 @@ export const CloseNav = () => {
               </NavLink>
                 <ul className="dropdown-menu">
                 <li><NavLink to="/user/profile" className="userp dropdown-item">Perfil</NavLink></li>
-                <li><NavLink to="/user/profile" className="userp dropdown-item">Mis Compras</NavLink></li>
+                <li><NavLink to="/user/user-history" className="userp dropdown-item">Mis Compras</NavLink></li>
                 
                 {/* // onClick={() => {
                 //     isProductInCart

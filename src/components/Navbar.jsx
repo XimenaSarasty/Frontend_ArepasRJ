@@ -10,6 +10,7 @@ export const Navbar = () => {
         <NavLink to="/" className="navbar-brand">
           <img className="logo" src={logo} alt="Logo" />
         </NavLink>
+        
         <button
           className="navbar-toggler"
           type="button"
@@ -26,12 +27,6 @@ export const Navbar = () => {
             <li className="nav-item">
               <NavLink to="/products" className="nav-link bold-text">
               Nuestros Productos
-              </NavLink>
-            </li>
-
-          <li className="nav-item">
-              <NavLink to="/contacto" className="nav-link bold-text">
-                Contacto
               </NavLink>
             </li>
           </ul>

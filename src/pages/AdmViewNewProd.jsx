@@ -9,8 +9,6 @@ const AdmViewNewProd = () => {
     <div>
       <NavAdm/>
       <AgProducto/>
-      <BannerWhatsapp/>
-      <Footer/>
     </div>
   )
 }

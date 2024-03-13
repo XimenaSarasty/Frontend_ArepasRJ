@@ -9,8 +9,6 @@ const AdmDomicilio = () => {
     <div>
       <NavAdm />
       <FeeShipment />
-      <BannerWhatsapp />
-      <Footer />
     </div>
   )
 }

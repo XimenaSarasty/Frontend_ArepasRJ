@@ -9,6 +9,10 @@ import ShoppingSummary from './pages/ShoppingSummary.jsx';
 import AdmViewNewProd from './pages/AdmViewNewProd.jsx';
 import AdmDomicilio from './pages/AdmDomicilio.jsx';
 import { RegisterLogin } from "./pages/RegisterLogin..jsx";
+import AdmOrder  from "./pages/AdmOrder.jsx";
+import HomeAdmView from "./pages/HomeAdmView.jsx";
+import UserHistory from "./pages/UserHistory.jsx";
+
 
 function App() {
   return (
@@ -23,7 +27,10 @@ function App() {
               <Route path='/admin/new-product' element={<AdmViewNewProd />} />
               <Route path='/admin/shipment-fee' element={<AdmDomicilio />} />
               <Route path='/user/profile' element={<ProfileUser/>} />
-              <Route path='/shoppingsummary' element={<ShoppingSummary />} />            
+              <Route path='/shoppingsummary' element={<ShoppingSummary />} />        
+              <Route path='/admin/adm-order' element={<AdmOrder />} />
+              <Route path='/admin' element={<HomeAdmView />} />    
+              <Route path="/user/user-history" element={<UserHistory />} />
           </Routes>
         </BrowserRouter>
       </DataProvider>
@@ -32,5 +39,3 @@ function App() {
 }
 
 export default App
-
-
