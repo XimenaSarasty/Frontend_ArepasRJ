@@ -1,6 +1,7 @@
 import "./index.css"
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Home } from './pages/Home.jsx';
+import { HomeLogin } from "./pages/Homelogin.jsx";
 import DataProvider from "./context/cartContext.jsx";
 import Products from './pages/Products.jsx';
 import ShoppingCart from './pages/ShoppingCart';
@@ -13,7 +14,6 @@ import AdmOrder  from "./pages/AdmOrder.jsx";
 import HomeAdmView from "./pages/HomeAdmView.jsx";
 import UserHistory from "./pages/UserHistory.jsx";
 
-
 function App() {
   return (
     <>
@@ -21,6 +21,7 @@ function App() {
         <BrowserRouter>
         <Routes>  
               <Route path='/' element={<Home />} />
+              <Route path='/home/login' element={<HomeLogin />} />
               <Route path='/login/register' element={<RegisterLogin />} />
               <Route path='/products' element={<Products />} />  
               <Route path='/shoppingcart' element={<ShoppingCart />} />

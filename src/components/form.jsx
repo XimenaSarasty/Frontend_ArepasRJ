@@ -77,7 +77,6 @@ const SimpleForm = () => {
 
     const form = e.target;
 
-    // Validación del formulario con la clase 'was-validated'
     if (!form.checkValidity()) {
       alert('Debes completar todos los campos requeridos');
       return;
