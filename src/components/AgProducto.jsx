@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import "../assets/Style.css"
+import { NavLink } from 'react-router-dom';
 
 /*
 -----------------------------------------------------------------------------------------------
@@ -77,8 +78,11 @@ const AgregarProducto = () => {
                         <label className='price-label' htmlFor="price">Price per unit:</label>
                         <input className='price-input' type="number" id="price" name="price" min="0" step="0.01" value={product.price} onChange={handleChange} required />
                         <input type="submit" value="Agregar producto" className='submit-button' />
-                    </div>
+                    </div>                    
                </form>
+               <NavLink>
+                    <button className='btn btn-primary'>Ver productos</button>
+               </NavLink>               
             </div>
         </div>                 
     );

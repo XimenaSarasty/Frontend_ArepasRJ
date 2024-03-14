@@ -1,6 +1,7 @@
 import "../assets/Style.css"
 import BannerWhatsapp from "../components/BannerWhatsapp";
 import SimpleForm from "../components/form";
+import Login from "../components/login";
 import logoImage from "../image/Logo.png";
 
 export const RegisterLogin = () => {
@@ -72,14 +73,10 @@ export const RegisterLogin = () => {
                 </section>
                 {/* Login and register form */}
                 <section className="front-box">
+                    <div className="front-box-login">
                     {/* Login form */}
-                    <form action="" className="login">
-                        <h2>Iniciar sesión</h2>
-                        <input type="email" placeholder="Correo Electrónico" />
-                        <input type="password"  placeholder="Contraseña"/>
-                        <button type="submit">Ingresar</button>                    
-                    </form>
-                    {/* Register form */}
+                    <Login />
+                    </div>
                     <SimpleForm />
                 </section>
             </div> 
