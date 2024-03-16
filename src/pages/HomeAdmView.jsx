@@ -1,13 +1,12 @@
 import React from 'react'
 import NavAdm from '../components/NavAdm'
-import Cartasinfo from '../components/CartasInfo'
+import CartasinfoAdmin from '../components/CartasInfoAdmin';
 
 const HomeAdmView = () => {
   return (
     <div>
-      <NavAdm />
-      
-      <Cartasinfo />
+      <NavAdm />      
+      <CartasinfoAdmin />
     </div>
   )
 }

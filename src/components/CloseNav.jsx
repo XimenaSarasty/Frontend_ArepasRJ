@@ -2,8 +2,18 @@ import "../assets/Style.css"
 import logo from "../image/logo.png";
 import { NavLink } from "react-router-dom";
 import { AddToCartIcon } from '../components/Icons.jsx';
+import Cookies from "js-cookie";
 
 export const CloseNav = () => {
+
+  const handleLogout = () => {
+    const confirmed = window.confirm('¿Estás seguro de que quieres cerrar la sesión?');
+    if (confirmed) {
+      Cookies.remove('token');
+      window.location.href = '/';
+    }
+  };
+  
   return (
     <header className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
@@ -50,19 +60,7 @@ export const CloseNav = () => {
                 <ul className="dropdown-menu">
                 <li><NavLink to="/user/profile" className="userp dropdown-item">Perfil</NavLink></li>
                 <li><NavLink to="/user/user-history" className="userp dropdown-item">Mis Compras</NavLink></li>
-                
-                {/* // onClick={() => {
-                //     isProductInCart
-                //       ? removeFromCart(product)
-                //       : addToCart(product)
-                //   }}
-                // >
-                //   {
-                //     isProductInCart
-                //       ? <RemoveFromCartIcon />
-                //       : 
-               
-                  } */}                
+                <li className="userp dropdown-item" onClick={handleLogout}>Cerrar sesión</li>            
               </ul>
             </div>
             </li>

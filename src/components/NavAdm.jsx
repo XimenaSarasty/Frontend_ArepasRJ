@@ -1,14 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Importa Link desde react-router-dom
 import { NavLink } from "react-router-dom"
 import logo from "../image/logo.png"
 import "../assets/Style.css"
+import Cookies from 'js-cookie';
 
 const NavAdm = () => {
+
+  const handleLogout = () => {
+    const confirmed = window.confirm('¿Estás seguro de que quieres cerrar la sesión?');
+    if (confirmed) {
+      Cookies.remove('token');
+      window.location.href = '/';
+    }
+  };
+
   return (
     <header className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
-        <NavLink to="/" className="navbar-brand">
+        <NavLink to="/admin" className="navbar-brand">
           <img className="logo" src={logo} alt="Logo" />
         </NavLink>
         <button
@@ -24,12 +33,11 @@ const NavAdm = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav me-auto mb-3 mb-lg-0">
-            <li className="nav-item">
-              <NavLink to="/products" className="nav-link bold-text">
-              Productos Agregados
+          <li className="nav-item">
+              <NavLink to="/admin/new-product" className="nav-link bold-text">
+              Agregar Productos
               </NavLink>
             </li>
-            
           <li className="nav-item">
               <NavLink to="/admin/shipment-fee" className="nav-link bold-text">
                 Domicilios
@@ -38,6 +46,11 @@ const NavAdm = () => {
             <li className="nav-item">
               <NavLink to="/admin/adm-order" className="nav-link bold-text">
                 Pedidos
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to="/roles/admin" className="nav-link bold-text">
+                Cambio Roles
               </NavLink>
             </li>
           </ul>
@@ -53,7 +66,7 @@ const NavAdm = () => {
                 Opciones
               </button>
               <ul className="dropdown-menu">
-                <li><NavLink to="/login/register" className="userp dropdown-item">Cerrar Sesion</NavLink></li>
+                <li className="userp dropdown-item" onClick={handleLogout}>Cerrar sesión</li>
               </ul>
             </div>
             </li>

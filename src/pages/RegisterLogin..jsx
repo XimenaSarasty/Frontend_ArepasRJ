@@ -1,8 +1,8 @@
 import "../assets/Style.css"
 import BannerWhatsapp from "../components/BannerWhatsapp";
 import SimpleForm from "../components/form";
-import Login from "../components/login";
-import logoImage from "../image/Logo.png";
+import logoImage from "../image/logo.png";
+import Login from "../components/Login";
 
 export const RegisterLogin = () => {
 
@@ -26,7 +26,7 @@ export const RegisterLogin = () => {
             backBoxLogin.style.display = "none";
         }
         
-    }
+    }    
     
     const registerF = () => {
         const frontBox = document.querySelector(".front-box");
@@ -49,13 +49,13 @@ export const RegisterLogin = () => {
             backBoxLogin.style.opacity = "1";
         }             
     }    
-
+    
   return (
     <main className="m-container">  
         {/* Company logo */}  
         <a href="/">      
         <img src={logoImage} alt="Logo de la empresa" className="logo-login" />  
-        </a>   
+        </a>  
             <div className="container">                
                 {/* info about access */}
                 <section className="back-box">
