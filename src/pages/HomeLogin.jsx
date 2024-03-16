@@ -1,19 +1,18 @@
-import Navbar from "../components/Navbar";
 import Carrusel from "../components/Carrusel"
-import CartasInfo from './../components/CartasInfo';
+import CartasInfo from '../components/CartasInfo';
 import Footer from '../components/Footer'
-
 import BannerWhatsapp from "../components/BannerWhatsapp";
+import { CloseNav } from "../components/CloseNav";
 
 
-export const Home = () => {
+export const HomeLogin = () => {
   return (
     <>
-        <Navbar/>
+        <CloseNav/>
         <Carrusel/>
         <CartasInfo/>
         <BannerWhatsapp/>
-	      <Footer/>
+	    <Footer/>
     </>
   )
 }

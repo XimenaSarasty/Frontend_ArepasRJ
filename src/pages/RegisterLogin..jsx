@@ -1,9 +1,10 @@
 import "../assets/Style.css"
-import logoImage from "../image/Logo.png";
-import BannerWhatsapp from "./BannerWhatsapp";
-import SimpleForm from "./Form";
+import BannerWhatsapp from "../components/BannerWhatsapp";
+import SimpleForm from "../components/form";
+import logoImage from "../image/logo.png";
+import Login from "../components/Login";
 
-export const Access = () => {
+export const RegisterLogin = () => {
 
     const loginF = () => {
         const frontBox = document.querySelector(".front-box");
@@ -25,7 +26,7 @@ export const Access = () => {
             backBoxLogin.style.display = "none";
         }
         
-    }
+    }    
     
     const registerF = () => {
         const frontBox = document.querySelector(".front-box");
@@ -48,13 +49,13 @@ export const Access = () => {
             backBoxLogin.style.opacity = "1";
         }             
     }    
-
+    
   return (
     <main className="m-container">  
         {/* Company logo */}  
         <a href="/">      
         <img src={logoImage} alt="Logo de la empresa" className="logo-login" />  
-        </a>   
+        </a>  
             <div className="container">                
                 {/* info about access */}
                 <section className="back-box">
@@ -72,14 +73,10 @@ export const Access = () => {
                 </section>
                 {/* Login and register form */}
                 <section className="front-box">
+                    <div className="front-box-login">
                     {/* Login form */}
-                    <form action="" className="login">
-                        <h2>Iniciar sesión</h2>
-                        <input type="email" placeholder="Correo Electrónico" />
-                        <input type="password"  placeholder="Contraseña"/>
-                        <button type="submit">Ingresar</button>                    
-                    </form>
-                    {/* Register form */}
+                    <Login />
+                    </div>
                     <SimpleForm />
                 </section>
             </div> 
