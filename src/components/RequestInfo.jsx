@@ -117,7 +117,9 @@ const RequestInfo = () => {
               </option>
             </select>
           </div>
-
+          <div className="note">
+                    <p>NOTA: Estos mismos datos son los que se usarán para generar la facturación del pedido.</p>
+                </div>
           <div className="col-12 mb-4">
             <button type="submit" className="btn btn-primary">
               Guardar Datos

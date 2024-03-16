@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import Cookies from 'js-cookie';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -11,7 +11,7 @@ const Login = () => {
     email: "",
     password: "",
   });
-
+ 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -28,32 +28,29 @@ const Login = () => {
         throw new Error(response.statusText || "Error en la solicitud");
       }
 
-      const responseText = await response.text();
 
+      const responseText = await response.text();
+      
       if (typeof responseText === "string") {
-        // Manejar la respuesta como un string
         const welcomeMessage = responseText.split("tu token es: ")[0];
         const token = responseText.split("tu token es: ")[1];
-        // Mostrar mensaje de bienvenida y guardar token
-        alert(welcomeMessage);
-        // Guardar el token en almacenamiento local o de sesión
-        console.log("Bienvenido, Usuario tu token es:", token);
+        console.log(welcomeMessage);
+        Cookies.set('token', token); 
 
         if (token && token.length > 0) {
-            // Mostrar el token en la consola
-            console.log("Token recibido:", token);
-
-            // Redireccionar a la página de inicio
-            // window.location.href = "/home/login";
+          if (welcomeMessage.includes('Bienvenido, Administrador')) {
+            window.location.href = "/admin";
           } else {
-            // Mostrar un mensaje de error
-            console.log("No se recibió el token");
+            window.location.href = "/home/login";
           }
+        } else {
+          console.log("No se recibió el token");
+        }
       }
     } catch (error) {
        alert("Credenciales incorrectas. Inténtalo de nuevo.");
     }
-  };
+  }; 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -129,4 +126,3 @@ const Login = () => {
 };
 
 export default Login;
-

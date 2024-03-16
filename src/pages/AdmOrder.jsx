@@ -5,8 +5,7 @@ import DetailReviewOrder from '../components/DetailReviewOrder'
 const AdmOrder = () => {
   return (
     <div>
-      <NavAdm />
-      
+      <NavAdm />      
       <DetailReviewOrder />
     </div>
   )

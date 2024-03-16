@@ -258,6 +258,10 @@ font-size:small;
   margin-left: 1rem;
   max-width: 3rem;
 }
+.btn-edit-delete{
+  display:flex;
+  justify-content: space-around;
+}
 
 /* Carrito */
 .cartContent {
@@ -397,6 +401,10 @@ textarea {
 }
 .other-departaments{
     color: red;
+}
+.note{
+  color: black;
+  font-size: small;
 }
 .padded-text{
   text-align: center;

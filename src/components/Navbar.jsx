@@ -2,6 +2,7 @@ import { useState } from "react";
 import "../assets/Style.css"
 import logo from "../image/logo.png";
 import { NavLink } from "react-router-dom";
+import SearchBar from "./SearchBar";
 
 export const Navbar = () => {
   return (
@@ -30,11 +31,12 @@ export const Navbar = () => {
               </NavLink>
             </li>
           </ul>
-          <form className="d-flex">
+          <SearchBar />
+          {/* <form className="d-flex">
             <input
               className="form-control me-2" type="search" placeholder="Busca aquí nuestros productos" aria-label="Search"/>
               <button className="btn btn-outline-success me-3" type="submit"> Buscar </button>
-          </form>
+          </form> */}
           <ul className="navbar-nav">
             <li className="nav-item">
               <NavLink to="/login/register" className="ingus nav-link btn">
