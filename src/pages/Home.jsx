@@ -1,17 +1,16 @@
 import Navbar from "../components/Navbar";
-import Carrusel from "../components/Carrusel"
-import CartasInfo from './../components/CartasInfo';
-import Footer from '../components/Footer'
-
+import Carrusel from "../components/Carrusel";
+import Footer from "../components/Footer";
+import CartasInfoSinLog from './../components/CartasInfoSinLog';
 import BannerWhatsapp from "../components/BannerWhatsapp";
 
-
 export const Home = () => {
+
   return (
     <>
         <Navbar/>
         <Carrusel/>
-        <CartasInfo/>
+        <CartasInfoSinLog/>
         <BannerWhatsapp/>
 	      <Footer/>
     </>

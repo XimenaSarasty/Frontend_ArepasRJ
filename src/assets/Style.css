@@ -436,6 +436,16 @@ textarea {
     font-weight: bold;
 }
 
+/* Domicilio */
+.table-shipment{
+  max-width: 80%;
+  margin-top: 20px;
+}
+.domibt{
+  display: flex;
+  justify-content: space-between;
+}
+
 /* Responsive */
 @media screen and (max-width: 768px) {
     main {
