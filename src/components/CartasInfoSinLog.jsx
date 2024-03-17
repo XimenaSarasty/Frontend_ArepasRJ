@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { AddToCartIcon } from './Icons';
 
-const CartasInfoSinLog = () => { 
-  const [products, setProducts] = useState([]); 
+const CartasInfoSinLog = ({ filteredProducts }) => {
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -15,7 +15,7 @@ const CartasInfoSinLog = () => {
       }
     };
     fetchProducts();
-  }, []); 
+  }, []);
 
   const handleAddToCart = () => {
     alert('Debes iniciar sesión para añadir productos al carrito.');
@@ -24,28 +24,47 @@ const CartasInfoSinLog = () => {
   return (
     <div className="cartas-container">
       <div className="row row-cols-1 row-cols-md-4 g-4">
-        {products.map(product => (
-          product.idProduct ? (
-            <div key={product.idProduct} className="col">
-              <div className="card">
-                {/* Renderiza la información del producto */}
-                <img src={`http://localhost:8080/api/imageProduct/${product.idProduct}`} className="card-img-top" alt="producto" />
-                <div className="card-body">
-                  <h5 className="card-title">{product.productName}</h5>
-                  <p className="card-text">{product.productDescription}</p>
-                  <h2 className="card-price">${product.unityPrice}</h2>
-                  <button onClick={handleAddToCart}
-                  className='btn btn-primary btn-carrito'>
-                    <AddToCartIcon />
-                  </button>
-                </div> 
+        {filteredProducts.length > 0 ? (
+          filteredProducts.map((product) => (
+            product.idProduct ? (
+              <div key={product.idProduct} className="col">
+                <div className="card">
+                  <img src={`http://localhost:8080/api/imageProduct/${product.idProduct}`} className="card-img-top" alt="producto" />
+                  <div className="card-body">
+                    <h5 className="card-title">{product.productName}</h5>
+                    <p className="card-text">{product.productDescription}</p>
+                    <h2 className="card-price">${product.unityPrice}</h2>
+                    <button onClick={handleAddToCart} className='btn btn-primary btn-carrito'>
+                      <AddToCartIcon />
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
-          ) : null
-        ))}
+            ) : null
+          ))
+        ) : (
+          products.map((product) => (
+            product.idProduct ? (
+              <div key={product.idProduct} className="col">
+                <div className="card">
+                  <img src={`http://localhost:8080/api/imageProduct/${product.idProduct}`} className="card-img-top" alt="producto" />
+                  <div className="card-body">
+                    <h5 className="card-title">{product.productName}</h5>
+                    <p className="card-text">{product.productDescription}</p>
+                    <h2 className="card-price">${product.unityPrice}</h2>
+                    <button onClick={handleAddToCart} className='btn btn-primary btn-carrito'>
+                      <AddToCartIcon />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ) : null
+          ))
+        )}
       </div>
     </div>
   );
 };
 
 export default CartasInfoSinLog;
+

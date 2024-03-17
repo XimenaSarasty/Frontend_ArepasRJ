@@ -3,8 +3,27 @@ import logo from "../image/logo.png";
 import { NavLink } from "react-router-dom";
 import { AddToCartIcon } from '../components/Icons.jsx';
 import Cookies from "js-cookie";
+import { useState } from "react";
+import axios from 'axios'; 
 
-export const CloseNav = () => {
+export const CloseNav = ({ onSearch }) => {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/api/searchProducts",
+        { productName: searchTerm }
+      );
+      const filteredProducts = response.data;
+      onSearch(filteredProducts); 
+    } catch (error) {
+      console.error(error); // Manejar posibles errores en la petición
+    }
+  };
 
   const handleLogout = () => {
     const confirmed = window.confirm('¿Estás seguro de que quieres cerrar la sesión?');
@@ -39,12 +58,19 @@ export const CloseNav = () => {
               Nuestros Productos
               </NavLink>
             </li>
-          </ul>
-          
-          <form className="d-flex">
+          </ul>          
+          <form className="d-flex" onSubmit={handleSubmit}>
             <input
-              className="form-control me-2" type="search" placeholder="Busca aquí nuestros productos" aria-label="Search"/>
-              <button className="btn btn-outline-success me-3" type="submit"> Buscar </button>
+              className="form-control me-2"
+              type="search"
+              placeholder="Busca aquí nuestros productos"
+              aria-label="Search"
+              value={searchTerm}
+              onChange={(event) => setSearchTerm(event.target.value)}
+            />
+            <button className="btn btn-outline-success me-3" type="submit">
+              Buscar
+            </button>
           </form>
           <ul className="navbar-nav">
             <li className="nav-item">
@@ -70,4 +96,3 @@ export const CloseNav = () => {
     </header>
   );
 };
-

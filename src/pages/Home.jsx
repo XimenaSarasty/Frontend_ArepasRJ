@@ -1,18 +1,27 @@
-import Navbar from "../components/Navbar";
+import React, { useState } from 'react';
+import Navbar from '../components/Navbar';
 import Carrusel from "../components/Carrusel";
-import Footer from "../components/Footer";
-import CartasInfoSinLog from './../components/CartasInfoSinLog';
+import CartasInfoSinLog from '../components/CartasInfoSinLog';
 import BannerWhatsapp from "../components/BannerWhatsapp";
+import Footer from "../components/Footer";
 
-export const Home = () => {
+
+const Home = () => {
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
+  const handleSearch = (products) => {
+    setFilteredProducts(products); 
+  };
 
   return (
     <>
-        <Navbar/>
-        <Carrusel/>
-        <CartasInfoSinLog/>
-        <BannerWhatsapp/>
-	      <Footer/>
-    </>
+    <Navbar onSearch={handleSearch} />
+    <Carrusel/>
+    <BannerWhatsapp/>
+    <CartasInfoSinLog onSearch={handleSearch} filteredProducts={filteredProducts} />
+    <Footer/>
+  </>
   )
 }
+
+export default Home;
