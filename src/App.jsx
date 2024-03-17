@@ -15,6 +15,8 @@ import UserHistory from "./pages/UserHistory.jsx";
 import RolesAdmin from "./components/RolesAdmin.jsx";
 import DataProvider from "./context/cartContext.jsx";
 import EditProduct from "./components/EditProduct.jsx";
+import ShipmentView from "./components/ShipmentView.jsx";
+import ResulSearchBar from "./components/ResulSearchBar.jsx";
 
 function App() {
   return (
@@ -34,8 +36,10 @@ function App() {
                 <Route path='/admin/adm-order' element={<AdmOrder />} />
                 <Route path='/admin' element={<HomeAdmView />} />    
                 <Route path="/user/user-history" element={<UserHistory />} />
+                <Route path="/user/resul/search/bar" element={<ResulSearchBar />} />
                 <Route path="/admin/roles" element={<RolesAdmin />} />
-                <Route path="/admin/edit-prod" element={<EditProduct />} />                
+                <Route path="/admin/:id/edit-prod" element={<EditProduct />} />   
+                <Route path="/admin/shipmentView" element={<ShipmentView />} />             
             </Routes>
           </BrowserRouter>
         </DataProvider>

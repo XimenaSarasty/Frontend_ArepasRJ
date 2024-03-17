@@ -1,17 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { AddToCartIcon } from '../components/Icons.jsx';
-import { cartContext } from '../context/cartContext';
+import { AddToCartIcon } from './Icons';
 
-const Products = () => {
- 
-  const [products, setProducts] = useState([]);
-  const {cart, setCart} = useContext(cartContext);
-
-
-  const buyProducts = (product) => {
-    setCart(prevCart => [...prevCart, product]);
-  };
+const CartasInfoSinLog = () => { 
+  const [products, setProducts] = useState([]); 
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -25,6 +17,10 @@ const Products = () => {
     fetchProducts();
   }, []); 
 
+  const handleAddToCart = () => {
+    alert('Debes iniciar sesión para añadir productos al carrito.');
+  };
+
   return (
     <div className="cartas-container">
       <div className="row row-cols-1 row-cols-md-4 g-4">
@@ -32,12 +28,14 @@ const Products = () => {
           product.idProduct ? (
             <div key={product.idProduct} className="col">
               <div className="card">
+                {/* Renderiza la información del producto */}
                 <img src={`http://localhost:8080/api/imageProduct/${product.idProduct}`} className="card-img-top" alt="producto" />
                 <div className="card-body">
                   <h5 className="card-title">{product.productName}</h5>
                   <p className="card-text">{product.productDescription}</p>
                   <h2 className="card-price">${product.unityPrice}</h2>
-                  <button onClick={()=>buyProducts(product)} className='btn btn-primary btn-carrito'>
+                  <button onClick={handleAddToCart}
+                  className='btn btn-primary btn-carrito'>
                     <AddToCartIcon />
                   </button>
                 </div> 
@@ -50,4 +48,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default CartasInfoSinLog;

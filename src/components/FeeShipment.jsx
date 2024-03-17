@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import "../assets/Style.css";
+import { NavLink } from 'react-router-dom';
 
 const FeeShipment = () => {
   const [selectedDepartment, setSelectedDepartment] = useState('');
@@ -11,8 +12,7 @@ const FeeShipment = () => {
   const [showCitySelect, setShowCitySelect] = useState(false);
   const [showMunicipalitySelect, setShowMunicipalitySelect] = useState(false);
 
-//LISTA DE DEPARTAMENTO ETC
-  const departments = [
+ const departments = [
     { name: 'Amazonas', cities: ['Leticia', 'Puerto Nariño'] },
     { name: 'Antioquia', cities: ['Medellin', 'Bello', 'Itagüí', 'Envigado', 'Caldas', 'Sabaneta', 'La Estrella', 'Girardota', 'Barbosa', 'Copacabana'] },
     { name: 'Arauca', cities: ['Arauca', 'Arauquita', 'Cravo Norte', 'Fortul', 'Caldas', 'Puerto Rondón', 'Saravena', 'Tame'] },
@@ -76,20 +76,38 @@ const FeeShipment = () => {
     }
   };
   
+  const handleSave = async () => {
+    try {
+      var deliveryAddress;
+      if (selectedMunicipality && selectedMunicipality !== '') {
+        deliveryAddress = selectedMunicipality;
+      } else {
+        deliveryAddress = selectedCity;
+      }
 
-  const handleSave = () => {
-    console.log("Departamento seleccionado:", selectedDepartment);
-    console.log("Ciudad seleccionada:", selectedCity);
-    console.log("Municipio seleccionado:", selectedMunicipality);
-    console.log("Comuna seleccionada:", selectedComuna);
-    console.log("Precio:", price);
+      const data = {
+        department: selectedDepartment,
+        city: selectedCity,
+        municipality: selectedMunicipality,
+        deliveryAddress: deliveryAddress, 
+        deliveryPrice: price
+      };
+
+      const response = await axios.post('http://localhost:8080/api/delivery/save', data);
+      console.log(response.data.message); // Log the response message
+      alert('Precio de domicilio agregado correctamente!')
+      window.location.reload();
+    } catch (error) {
+      console.error('Error saving delivery price:', error);
+    }
   };
 
   return (
-    <div className="allin">
-      <h4 className='nombenvio'>Agregar Nuevo Costo de Envio</h4>
+    <div className='agregar-producto-container'>
+      <div className="allin">
+      <h2 className='nombenvio'>Agregar Costo de Envio</h2>
       <div className="other-departaments">
-          <p className='padded-text'>Cuando los pedidos sean fuera del Valle de Aburrá y el cliente se comunique para acordar valor de envío, debes crear la ciudad aquí.</p>
+          <p className='padded-text'>Cuando los pedidos sean fuera del Valle de Aburrá y el cliente se comunique para acordar valor de envío, debes asignar el valor aquí.</p>
       </div>
       <div className="col-md-3 mb-4"> 
         <label htmlFor="departmentSelect" className="form-label htmlFor"></label>
@@ -154,9 +172,13 @@ const FeeShipment = () => {
       </div>
       <div className="domibt col-md-12 mb-4">
         <button onClick={handleSave} className="my-3 btn btn-primary" style={{ marginLeft: '3rem' }}>Guardar</button>
+      <NavLink to={'/admin/shipmentView'}>
+        <button className='btn btn-primary'>Ver domicilios Registrados</button>
+      </NavLink>  
       </div>
     </div>
     
+    </div>
   );
 };
 

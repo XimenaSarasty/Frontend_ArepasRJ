@@ -1,12 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import { cartContext } from '../context/cartContext.jsx';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
-  const { cart, setCart } = useContext(cartContext);
-  // const history = useHistory();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -49,9 +46,9 @@ const Products = () => {
                   <p className="card-text">{product.productDescription}</p>
                   <h2 className="card-price">${product.unityPrice}</h2>
                   <div className='btn-edit-delete'>
-                  <NavLink to={'/admin/edit-prod'}>                 
+                  <Link to={`${product.idProduct}/edit-prod`}>                 
                       <button className="btn btn-primary btn-editar">Editar</button> 
-                  </NavLink>  
+                  </Link>  
                   <button onClick={() => handleDelete(product.idProduct)} className='btn btn-danger'>Eliminar</button> 
                   </div>               
                 </div>
