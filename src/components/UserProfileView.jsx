@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const UserProfileView = () => {
   const [user, setUser] = useState({
+    id_users: '',
     name: '',
     lastName: '',
     phone: '',
@@ -11,12 +12,12 @@ const UserProfileView = () => {
   });
 
   const [editing, setEditing] = useState(false);
-
+ 
   useEffect(() => {
     // Función para obtener los datos del usuario desde el backend
     const fetchUserData = async () => {
       try {
-        const response = await axios.get('/users'); // Endpoint para obtener datos del usuario activo
+        const response = await axios.get(`http://localhost:8080/api/users//${id_users}`); // Endpoint para obtener datos del usuario activo
         setUser(response.data);
         console.log(response.data);
       } catch (error) {
@@ -37,7 +38,7 @@ const UserProfileView = () => {
 
   const handleSaveClick = async () => {
     try {
-      await axios.put(`/api/users/${user.id}`, user); // Endpoint para actualizar los datos del usuario
+      await axios.put(`http://localhost:8080/api/update/${user.id}`, user); // Endpoint para actualizar los datos del usuario
       setEditing(false);
     } catch (error) {
       console.error('Error updating user data:', error);

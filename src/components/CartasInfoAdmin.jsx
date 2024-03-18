@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-const Products = () => {
+const Products = ({ filteredProducts }) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -31,11 +31,11 @@ const Products = () => {
   return (
     <div className="cartas-container">
       <div className="row row-cols-1 row-cols-md-4 g-4">
-        {products.map((product) => (
-          product.idProduct ? (
+      {filteredProducts.length > 0 ? (
+          filteredProducts.map((product) => (
+            product.idProduct ? ( 
             <div key={product.idProduct} className="col">
               <div className="card">
-                {/* Renderiza la información del producto */}
                 <img
                   src={`http://localhost:8080/api/imageProduct/${product.idProduct}`}
                   className="card-img-top"
@@ -55,10 +55,26 @@ const Products = () => {
               </div>
             </div>
           ) : null
-        ))}
+          ))
+          ) : (
+            products.map((product) => (
+              product.idProduct ? (
+                <div key={product.idProduct} className="col">
+                  <div className="card">
+                    <img src={`http://localhost:8080/api/imageProduct/${product.idProduct}`} className="card-img-top" alt="producto" />
+                    <div className="card-body">
+                      <h5 className="card-title">{product.productName}</h5>
+                      <p className="card-text">{product.productDescription}</p>
+                      <h2 className="card-price">${product.unityPrice}</h2>
+                    </div>
+                  </div>
+                </div>
+              ) : null
+            ))
+          )}
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  };
 
 export default Products;

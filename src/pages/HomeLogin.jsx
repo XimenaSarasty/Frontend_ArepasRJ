@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import Carrusel from "../components/Carrusel"
 import CartasInfo from '../components/CartasInfo';
 import Footer from '../components/Footer'
@@ -6,11 +7,18 @@ import { CloseNav } from "../components/CloseNav";
 
 
 export const HomeLogin = () => {
+
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
+  const handleSearch = (products) => {
+    setFilteredProducts(products); 
+  };
+
   return (
     <>
-        <CloseNav/>
+        <CloseNav onSearch={handleSearch}/>
         <Carrusel/>
-        <CartasInfo/>
+        <CartasInfo onSearch={handleSearch} filteredProducts={filteredProducts}/>
         <BannerWhatsapp/>
 	    <Footer/>
     </>

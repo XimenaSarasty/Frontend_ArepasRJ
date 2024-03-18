@@ -3,7 +3,7 @@ import axios from 'axios';
 import { AddToCartIcon } from '../components/Icons.jsx';
 import { cartContext } from '../context/cartContext';
 
-const Products = () => {
+const Products = ({ filteredProducts }) => {
  
   const [products, setProducts] = useState([]);
   const {cart, setCart} = useContext(cartContext);
@@ -28,8 +28,9 @@ const Products = () => {
   return (
     <div className="cartas-container">
       <div className="row row-cols-1 row-cols-md-4 g-4">
-        {products.map(product => (
-          product.idProduct ? (
+      {filteredProducts.length > 0 ? (
+          filteredProducts.map((product) => (
+            product.idProduct ? (
             <div key={product.idProduct} className="col">
               <div className="card">
                 <img src={`http://localhost:8080/api/imageProduct/${product.idProduct}`} className="card-img-top" alt="producto" />
@@ -44,7 +45,26 @@ const Products = () => {
               </div>
             </div>
           ) : null
-        ))}
+        ))
+        ) : (
+          products.map((product) => (
+            product.idProduct ? (
+              <div key={product.idProduct} className="col">
+                <div className="card">
+                  <img src={`http://localhost:8080/api/imageProduct/${product.idProduct}`} className="card-img-top" alt="producto" />
+                  <div className="card-body">
+                    <h5 className="card-title">{product.productName}</h5>
+                    <p className="card-text">{product.productDescription}</p>
+                    <h2 className="card-price">${product.unityPrice}</h2>
+                    <button onClick={()=>buyProducts(product)} className='btn btn-primary btn-carrito'>
+                      <AddToCartIcon />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ) : null
+          ))
+        )}
       </div>
     </div>
   );
