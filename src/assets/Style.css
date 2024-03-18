@@ -219,49 +219,58 @@ font-size:small;
     padding-top: 10rem;
   }
 
-  /*Cartas*/
+/* Estilos para las cartas */
 .cartas-container {
-    padding-top: 5rem;
-    margin-right: 3rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-  }
-.card {
-    width: 20rem; 
-    margin-left: 1.3rem;
-    height: 430px; 
-  }
-  .card-body {
-    margin-left: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-  }
-  .btn-primary {
-    background-color: orange;
-    color: white;
-    border-color: orange;
-  }
-.btn-primary:hover {
-    background-color: darkorange;
-    border-color: darkorange;
-  }
-
-.userp:hover{
-    color: darkorange;
+  padding-top: 5rem;
+  margin-right: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
-.btn-carrito{
+.card {
+  width: 20rem; 
+  margin-left: 1.3rem;
+  height: 430px; 
+}
+
+.card-body {
+  margin-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* Estilos para los botones */
+.btn-primary,
+.btn-danger {
+  color: white; /* Letra blanca */
+  text-decoration: none; /* Quita la línea azul debajo del texto */
+  border: none; /* Quita el borde del botón */
+}
+
+.btn-primary:hover,
+.btn-danger:hover {
+  background-color: darkorange; /* Cambia el color de fondo al pasar el cursor */
+  border: none; /* Quita el borde al pasar el cursor */
+}
+
+.userp:hover {
+  color: darkorange;
+}
+
+.btn-carrito {
   margin-left: 1rem;
   max-width: 3rem;
 }
-.btn-edit-delete{
-  display:flex;
+
+.btn-edit-delete {
+  display: flex;
   justify-content: space-around;
 }
+
 
 /* Carrito */
 .cartContent {
@@ -332,7 +341,7 @@ font-size:small;
 }
 
 .form-group {
-    margin-bottom: 2px;
+    margin-bottom: 10px;
 }
 
 .magenp {
@@ -351,6 +360,14 @@ select {
 
 textarea {
     resize: vertical;
+}
+
+
+.image-label,
+.name-label,
+.description-label,
+.price-label {
+    margin-bottom: 8px; /* Aumenta el espacio entre las etiquetas y los campos de entrada */
 }
 
 .submit-button {

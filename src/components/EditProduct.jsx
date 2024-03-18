@@ -3,9 +3,11 @@ import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import NavAdm from './NavAdm';
 import "../assets/Style.css";
 
-const EditProduct = () => {
+<NavAdm />
+const EditProduct = () => {   
     const { id } = useParams();
 
     const [products, setProducts] = useState({
@@ -32,6 +34,7 @@ const EditProduct = () => {
             fetchProducts();
         }
     }, []);
+    
 
     const handleChange = (e) => {
         if (e.target.name === 'image') {
@@ -81,6 +84,7 @@ const EditProduct = () => {
     };
 
     return (
+        
         <div className="allin">
             <div className='agregar-producto-container'>
                 <h2>{id ? 'Editar Producto' : ''}</h2>

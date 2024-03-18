@@ -54,11 +54,7 @@ const NavAdm = () => {
               </NavLink>
             </li>
           </ul>
-          <form className="d-flex">
-            <input
-              className="form-control me-2" type="search" placeholder="Busca aquí nuestros productos" aria-label="Search"/>
-              <button className="btn btn-outline-success me-3" type="submit"> Buscar </button>
-          </form>
+          
           <ul className="navbar-nav">
             <li className="nav-item">
             <div className="dropdown">
