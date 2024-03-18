@@ -118,7 +118,7 @@ function ShipmentView() {
       )}
       {domicilios.length === 0 && <p>No se encontraron domicilios</p>}
       <NavLink to={'/admin/shipment-fee'}>
-        <button className='btn btn-primary'>Atrás</button>
+        <button className='btn btn-secondary'>Atrás</button>
       </NavLink>  
     </div>
   );

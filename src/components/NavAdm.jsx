@@ -67,7 +67,7 @@ const NavAdm = ({ onSearch }) => {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/roles/admin" className="nav-link bold-text">
+              <NavLink to="/admin/roles" className="nav-link bold-text">
                 Cambio Roles
               </NavLink>
             </li>
@@ -92,6 +92,7 @@ const NavAdm = ({ onSearch }) => {
                 Opciones
               </button>
               <ul className="dropdown-menu">
+                <li><NavLink to="/user/profile" className="userp dropdown-item">Perfil</NavLink></li>
                 <li className="userp dropdown-item" onClick={handleLogout}>Cerrar sesión</li>
               </ul>
             </div>
