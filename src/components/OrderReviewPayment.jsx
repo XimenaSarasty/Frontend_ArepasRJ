@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { cartContext } from '../context/cartContext'; 
 import { NavLink } from 'react-router-dom';
 
-const OrderReview = () => {
+const OrderReviewPayment = () => {
   
   const { cart } = useContext(cartContext);
 
@@ -28,14 +28,9 @@ const OrderReview = () => {
           <h5 className="bold">TOTAL</h5>
           <h5 className="bold">$0</h5>
         </div>
-        <div className="col-12 mb-4">
-          <NavLink to={'/user/payment/gateway'}>
-            <button type="submit" className="btn btn-primary">Ir a Pago</button>
-          </NavLink>
-        </div>
       </div>
       
     )
   }
   
-  export default OrderReview;
+  export default OrderReviewPayment;

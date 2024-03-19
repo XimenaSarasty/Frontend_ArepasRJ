@@ -1,4 +1,5 @@
 const RequestInfo = () => {
+
   return (
     <>
       <div className="data_container">
@@ -122,7 +123,7 @@ const RequestInfo = () => {
                 </div>
           <div className="col-12 mb-4">
             <button type="submit" className="btn btn-primary">
-              Guardar Datos
+              Guardar datos
             </button>
           </div>
         </form>
