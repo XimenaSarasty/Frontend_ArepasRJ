@@ -10,7 +10,7 @@ const PriorOrder = () => {
 
   return (
         <div className="prior-order row g-3 pt-2 mt-5">
-            <h4 className="pb-4">Revisión Pedido</h4>
+            <h4 className="pb-4">Resumen Compra</h4>
             
             <div className="review-item">
             <p>SUBTOTAL</p> 

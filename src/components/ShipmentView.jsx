@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
+import jsPDF from 'jspdf';
 
 function ShipmentView() {
   const [domicilios, setDomicilios] = useState([]);
@@ -72,12 +73,37 @@ function ShipmentView() {
     setEditingDomicilio({ ...editingDomicilio, [e.target.name]: e.target.value });
   };
 
+  const exportToPDF = () => {
+
+    const doc = new jsPDF();
+
+    doc.text('Tarifas de Domicilios Actuales', 10, 10);
+
+    const columns = [
+      {header: 'Departamento', dataKey: 'department'},
+      {header: 'Ciudad', dataKey: 'city'},
+      {header: 'Comuna', dataKey: 'deliveryAddress', width: 100}, 
+      {header: 'Valor', dataKey: 'deliveryPrice'},
+    ];
+      
+    domicilios.forEach((domicilio, index) => {
+      const y = 15 + (index + 1) * 10; 
+      doc.text(domicilio.department, 10, y);
+      doc.text(domicilio.city, 50, y);
+      doc.text(domicilio.deliveryAddress, 90, y);
+      doc.text(domicilio.deliveryPrice.toString(), 130, y);
+    });
+ 
+    doc.save('domicilios.pdf');
+  };
+  
+
   return (
-    <div>
+    <div className='allin col-8'>
       <h2>Domicilios Agregados</h2>
       {error && <p>Error al obtener domicilios: {error.message}</p>}
       {domicilios.length > 0 && (
-        <table className="table table-striped">
+        <table className="table table-striped ">
           <thead>
             <tr>
               <th scope="col">Departamento</th>
@@ -120,6 +146,7 @@ function ShipmentView() {
       <NavLink to={'/admin/shipment-fee'}>
         <button className='btn btn-secondary'>Atrás</button>
       </NavLink>  
+      <button className='btn btn-primary' onClick={exportToPDF}>Exportar PDF</button>
     </div>
   );
 }

@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const RolesAdmin = () => {
   const [users, setUsers] = useState([]);
   const [email, setEmail] = useState('');
+
+  useEffect(() => {
+    fetchUsers();
+  }, []); // Esta función se ejecutará solo una vez al cargar el componente
 
   const fetchUsers = async () => {
     try {
@@ -38,8 +42,28 @@ const RolesAdmin = () => {
     });
   };
 
+  const handleSave = async () => {
+    try {
+      const modifiedUser = users.find(user => user[1] === email);
+      if (!modifiedUser) {
+        throw new Error('No se encontró el usuario');
+      }
+  
+      const response = await fetch(`http://localhost:8080/api/modify-role-button/newRole/${email}?newRole=${modifiedUser[2]}`, {
+        method: 'PUT',
+      });
+      if (!response.ok) {
+        throw new Error('Error al actualizar el rol');
+      }
+      alert('Rol actualizado con éxito');
+    } catch (error) {
+      alert('Ocurrió un error al actualizar el rol');
+    }
+  };
+  
+
   return (
-    <div>
+    <div className="allin col-8">
       <h2>Cambio de Roles</h2>
       <form className="d-flex">
         <input
@@ -83,7 +107,7 @@ const RolesAdmin = () => {
             ))}
           </tbody>
         </table>
-        <button className="btn btn-primary">
+        <button className="btn btn-primary" onClick={handleSave}>
           Guardar
         </button>
         <NavLink to={'/admin'}>

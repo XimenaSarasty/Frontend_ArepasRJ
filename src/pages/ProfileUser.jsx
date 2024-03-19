@@ -5,8 +5,7 @@ const ProfileUser = () => {
   return (
     <div>
       <CloseNav/>
-      <UserProfileView />
-      
+      <UserProfileView />      
     </div>
   )
 }

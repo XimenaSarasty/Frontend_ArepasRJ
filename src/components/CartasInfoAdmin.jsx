@@ -46,7 +46,7 @@ const Products = ({ filteredProducts }) => {
                   <p className="card-text">{product.productDescription}</p>
                   <h2 className="card-price">${product.unityPrice}</h2>
                   <div className='btn-edit-delete'>
-                  <Link to={`${product.idProduct}/edit-prod`}>                 
+                  <Link to={`/admin/${product.idProduct}/edit-prod`}>                 
                       <button className="btn btn-primary btn-editar">Editar</button> 
                   </Link>  
                   <button onClick={() => handleDelete(product.idProduct)} className='btn btn-danger'>Eliminar</button> 
