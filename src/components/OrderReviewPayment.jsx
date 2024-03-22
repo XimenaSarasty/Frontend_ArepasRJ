@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+  import React, { useContext } from 'react';
 import { cartContext } from '../context/cartContext'; 
-import { NavLink } from 'react-router-dom';
 
 const OrderReviewPayment = () => {
   
@@ -34,3 +33,4 @@ const OrderReviewPayment = () => {
   }
   
   export default OrderReviewPayment;
+

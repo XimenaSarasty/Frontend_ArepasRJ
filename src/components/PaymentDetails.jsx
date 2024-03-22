@@ -1,10 +1,13 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const PaymentDetails = () => {
 
+  const navigate = useNavigate();
+
     const  handlePayment = () => {
         alert('Pago realizado exitosamente')
-        window.location.href = '/user/user-history';
+        navigate('/user/user-history');
       }
 
     return (

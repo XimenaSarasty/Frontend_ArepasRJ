@@ -3,25 +3,24 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 const UserProfileView = () => {
+
   const [user, setUser] = useState({
-    nombre: '',
-    apellido: '',
-    correo: '',
-    celular: '',
-    direccion: '',
-    password: ''
+    name: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    address: ''
+  });
+
+  const [errorMessages, setErrorMessages] = useState({
+    name: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    address: '',
   });
 
   const [editing, setEditing] = useState(false);
-  const [passwordVisible, setPasswordVisible] = useState(false); 
-  
-  const handleInputChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
-  // Si el campo que está cambiando es la contraseña, actualiza el estado interno para mostrarla en puntos
-  if (e.target.name === 'password') {
-    setPasswordVisible(true);
-  }
-};
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -31,29 +30,84 @@ const UserProfileView = () => {
           const response = await axios.get('http://localhost:8080/getUser', {
             headers: {
               'Content-Type': 'application/json',
-              Authorization: `Bearer ${token}` // Usa el token directamente
+              Authorization: `Bearer ${token}` 
             }
           });
-          const userData = response.data; // Asegúrate de que los datos recibidos coincidan con la estructura del estado inicial
-          setUser(userData); // Actualiza el estado con los datos del usuario
+          const userData = response.data; 
+          setUser(userData); 
+          setUser({ ...userData, id: userData.idUsers }); 
         } catch (error) {
-          console.error('Error al obtener los datos del usuario:', error);          
+          console.error('Error al obtener los datos del usuario:', error);
         }
       }
     };
     fetchUserData();
   }, []);
 
- const handleSaveClick = async () => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    // Validar nombre 
+    if (name === 'name') {
+      if (/^[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ\s]+$/.test(value)) {
+        setErrorMessages({ ...errorMessages, [name]: '' });
+      } else {
+        setErrorMessages({ ...errorMessages, [name]: 'El nombre contiene caracteres incorrectos.' });
+      }
+    }
+   // Validar apellido
+    if (name === 'lastName') {
+      if (/^[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ\s]+$/.test(value)) {
+        setErrorMessages({ ...errorMessages, [name]: '' });
+      } else {
+        setErrorMessages({ ...errorMessages, [name]: 'El apellido contiene caracteres incorrectos.' });
+      }
+    }
+    // Validar longitud y formato del número de teléfono
+    if (name === 'phone') {
+      if (/^3\d{9}$/.test(value)) {
+        setErrorMessages({ ...errorMessages, phone: '' });
+      } else {
+        setErrorMessages({ ...errorMessages, phone: 'El número de teléfono debe empezar en 3 y contener 10 dígitos.' });
+      }
+    }
+    setUser({ ...user, [e.target.name]: e.target.value });
+};
+
+const handleSave = async (e) => {
+  e.preventDefault();
+
+  if (Object.values(errorMessages).some(error => error)) {
+    alert('Existen errores en el formulario. Por favor, revise los campos marcados.');
+    return; 
+  }
+
   try {
-    await axios.put(`http://localhost:8080/api/update/${user.id}`, user);
-    setEditing(false);
+    const token = Cookies.get('token');
+    if (!token) {
+      throw new Error('No se ha encontrado un token de autenticación.');
+    }
+
+    await axios.put(`http://localhost:8080/api/update/${user.id}`, user, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      }
+    });
+    alert('Perfil actualizado con éxito');
+    // Aquí debes decidir qué hacer después de actualizar el perfil, como redirigir al usuario a otra página.
   } catch (error) {
-    console.error('Error al actualizar los datos del usuario:', error);
+    console.error('Error al actualizar el perfil:', error);
+    if (error.response && error.response.data && error.response.data.message) {
+      alert(`Error al actualizar el perfil: ${error.response.data.message}`);
+    } else {
+      alert('Error al actualizar el perfil. Por favor, inténtalo de nuevo más tarde.');
+    }
   }
 };
 
   return (
+    <form className={`update ${Object.values(errorMessages).some(error => error) ? 'was-validated' : ''}`} id="update" noValidate>
     <div className='profile-container-wrapper'>
       <div className='profile-container'>
         <h2 className='profile-title'>Mi Perfil</h2>
@@ -63,13 +117,14 @@ const UserProfileView = () => {
           {editing ? (
             <input
               type="text"
-              name="nombre"
+              name="name"
               value={user.name}
-              onChange={handleInputChange}
+              onChange={handleChange}
             />
           ) : (
             <span className='profile-value'>{user.name}</span>
           )}
+          {errorMessages.name && <div className='error-message'>{errorMessages.name}</div>}
         </div>
 
         <div className='profile-field'>
@@ -77,67 +132,244 @@ const UserProfileView = () => {
           {editing ? (
             <input
               type="text"
-              name="apellido"
+              name="lastName"
               value={user.lastName}
-              onChange={handleInputChange}
+              onChange={handleChange}
             />
           ) : (
             <span className='profile-value'>{ user.lastName }</span>
           )}
+          {errorMessages.lastName && <div className='error-message'>{errorMessages.lastName}</div>}
         </div>
         <div className='profile-field'>
           <label className='profile-label'>Correo Electrónico:</label>
           <span className='profile-value'>{user.email}</span>
         </div>
         <div className='profile-field'>
-          <label className='profile-label'>Contraseña:</label>
-          {editing ? (
-            <input
-              type={passwordVisible ? "text" : "password"} // Cambiar el tipo de entrada según la visibilidad de la contraseña
-              name="password"
-              value={user.password}
-              onChange={handleInputChange}
-            />
-          ) : (
-            <span className='profile-value'>
-              {passwordVisible ? user.password.replace(/./g, "*") : "••••••••••••"} {/* Mostrar la contraseña en puntos o enmascarada */}
-            </span>
-          )}
-        </div>
-        <div className='profile-field'>
           <label className='profile-label'>Celular:</label>
           {editing ? (
             <input
               type="text"
-              name="celular"
+              name="phone"
               value={user.phone}
-              onChange={handleInputChange}
-            />            
+              onChange={handleChange}
+            />
           ) : (
             <span className='profile-value'>{user.phone}</span>
           )}
+          {errorMessages.phone && <div className='error-message'>{errorMessages.phone}</div>}
         </div>
         <div className='profile-field'>
           <label className='profile-label'>Dirección:</label>
           {editing ? (
             <input
               type="text"
-              name="direccion"
+              name="address"
               value={user.address}
-              onChange={handleInputChange}
+              onChange={handleChange}
             />
           ) : (
             <span className='profile-value'>{user.address}</span>
             )}
-        </div>    
+        </div>
         {editing ? (
-              <button className='btn btn-primary' onClick={handleSaveClick}>Guardar</button>
+          <div className='profile-buttons'>
+              <button type='submit' className='btn btn-primary' onClick={handleSave}>Guardar</button>
+              <button className='btn btn-danger' onClick={() => setEditing(false)}>Cancelar</button>
+              </div>
             ) : (
               <button className='btn btn-primary' onClick={() => setEditing(true)}>Editar</button>
             )}
           </div>
         </div>
+        </form>
       );
     };
 
-export default UserProfileView;    
+export default UserProfileView;
+
+// CODIGO QUE FUNCIONA LA EDICIÓN PERO ELIMINAR ID  
+// import React, { useState, useEffect } from 'react';
+// import axios from 'axios';
+// import Cookies from 'js-cookie';
+
+// const UserProfileView = () => {
+
+//   const [user, setUser] = useState({
+//     name: '',
+//     lastName: '',
+//     email: '',
+//     phone: '',
+//     address: '',
+//     id:''
+//   });
+
+//   const [errorMessages, setErrorMessages] = useState({
+//     name: '',
+//     lastName: '',
+//     email: '',
+//     phone: '',
+//     address: '',
+//   });
+
+//   const [editing, setEditing] = useState(false);
+
+//   useEffect(() => {
+//     const fetchUserData = async () => {
+//       const token = Cookies.get('token');
+//       if (token && token.length > 0) {
+//         try {
+//           const response = await axios.get('http://localhost:8080/getUser', {
+//             headers: {
+//               'Content-Type': 'application/json',
+//               Authorization: `Bearer ${token}` 
+//             }
+//           });
+//           const userData = response.data; 
+//           setUser(userData); 
+//           setUser({ ...userData, id: userData.idUsers }); 
+//         } catch (error) {
+//           console.error('Error al obtener los datos del usuario:', error);
+//         }
+//       }
+//     };
+//     fetchUserData();
+//   }, []);
+
+//   const handleChange = (e) => {
+//     const { name, value } = e.target;
+
+//     // Validar nombre 
+//     if (name === 'name') {
+//       if (/^[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ\s]+$/.test(value)) {
+//         setErrorMessages({ ...errorMessages, [name]: '' });
+//       } else {
+//         setErrorMessages({ ...errorMessages, [name]: 'El nombre contiene caracteres incorrectos.' });
+//       }
+//     }
+//    // Validar apellido
+//     if (name === 'lastName') {
+//       if (/^[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ\s]+$/.test(value)) {
+//         setErrorMessages({ ...errorMessages, [name]: '' });
+//       } else {
+//         setErrorMessages({ ...errorMessages, [name]: 'El apellido contiene caracteres incorrectos.' });
+//       }
+//     }
+//     // Validar longitud y formato del número de teléfono
+//     if (name === 'phone') {
+//       if (/^3\d{9}$/.test(value)) {
+//         setErrorMessages({ ...errorMessages, phone: '' });
+//       } else {
+//         setErrorMessages({ ...errorMessages, phone: 'El número de teléfono debe empezar en 3 y contener 10 dígitos.' });
+//       }
+//     }
+//     setUser({ ...user, [e.target.name]: e.target.value });
+// };
+
+//  const handleSave = async (e) => {
+//   e.preventDefault();
+
+//   if (Object.values(errorMessages).some(error => error)) {
+//     alert('Existen errores en el formulario. Por favor, revise los campos marcados.');
+//     return; 
+//   }
+
+//   try {
+//     const updatedUser = { ...user }; 
+//     delete updatedUser.id; 
+
+//     await axios.put(`http://localhost:8080/api/update/${user.id}`, updatedUser, {
+//       headers: {
+//         'Content-Type': 'application/json' 
+//       }
+//     });
+//     alert('Perfil actualizado con éxito');
+//     navigate('/admin');
+// } catch (error) {
+//     console.log('Error al actualizar el perfil:', error.response.data.message);
+// }
+
+// };
+
+//   return (
+//     <form className={`update ${Object.values(errorMessages).some(error => error) ? 'was-validated' : ''}`} id="update" noValidate>
+//     <div className='profile-container-wrapper'>
+//       <div className='profile-container'>
+//         <h2 className='profile-title'>Mi Perfil</h2>
+
+//         <div className='profile-field'>
+//           <label className='profile-label'>Nombre:</label>
+//           {editing ? (
+//             <input
+//               type="text"
+//               name="name"
+//               value={user.name}
+//               onChange={handleChange}
+//             />
+//           ) : (
+//             <span className='profile-value'>{user.name}</span>
+//           )}
+//           {errorMessages.name && <div className='error-message'>{errorMessages.name}</div>}
+//         </div>
+
+//         <div className='profile-field'>
+//           <label className='profile-label'>Apellido:</label>
+//           {editing ? (
+//             <input
+//               type="text"
+//               name="lastName"
+//               value={user.lastName}
+//               onChange={handleChange}
+//             />
+//           ) : (
+//             <span className='profile-value'>{ user.lastName }</span>
+//           )}
+//           {errorMessages.lastName && <div className='error-message'>{errorMessages.lastName}</div>}
+//         </div>
+//         <div className='profile-field'>
+//           <label className='profile-label'>Correo Electrónico:</label>
+//           <span className='profile-value'>{user.email}</span>
+//         </div>
+//         <div className='profile-field'>
+//           <label className='profile-label'>Celular:</label>
+//           {editing ? (
+//             <input
+//               type="text"
+//               name="phone"
+//               value={user.phone}
+//               onChange={handleChange}
+//             />
+//           ) : (
+//             <span className='profile-value'>{user.phone}</span>
+//           )}
+//           {errorMessages.phone && <div className='error-message'>{errorMessages.phone}</div>}
+//         </div>
+//         <div className='profile-field'>
+//           <label className='profile-label'>Dirección:</label>
+//           {editing ? (
+//             <input
+//               type="text"
+//               name="address"
+//               value={user.address}
+//               onChange={handleChange}
+//             />
+//           ) : (
+//             <span className='profile-value'>{user.address}</span>
+//             )}
+//         </div>
+//         {editing ? (
+//           <div className='profile-buttons'>
+//               <button type='submit' className='btn btn-primary' onClick={handleSave}>Guardar</button>
+//               <button className='btn btn-danger' onClick={() => setEditing(false)}>Cancelar</button>
+//               </div>
+//             ) : (
+//               <button className='btn btn-primary' onClick={() => setEditing(true)}>Editar</button>
+//             )}
+//           </div>
+//         </div>
+//         </form>
+//       );
+//     };
+
+// export default UserProfileView;
+
