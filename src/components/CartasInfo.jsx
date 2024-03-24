@@ -10,7 +10,8 @@ const Products = ({ filteredProducts }) => {
 
 
   const buyProducts = (product) => {
-    setCart(prevCart => [...prevCart, product]);
+    const productWithQuantity = { ...product, productQuantity: 1 };
+    setCart(prevCart => [...prevCart, productWithQuantity]);
   };
 
   useEffect(() => {

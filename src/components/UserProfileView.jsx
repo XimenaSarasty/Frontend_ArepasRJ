@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import { NavLink } from 'react-router-dom';
 
 const UserProfileView = () => {
 
@@ -180,6 +181,11 @@ const handleSave = async (e) => {
             ) : (
               <button className='btn btn-primary' onClick={() => setEditing(true)}>Editar</button>
             )}
+            <NavLink to='/shoppingsummary'>
+              <button type="button" className="btn btn-primary">
+              Regresar a la compra
+              </button>
+           </NavLink>
           </div>
         </div>
         </form>

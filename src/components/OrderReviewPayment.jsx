@@ -7,8 +7,6 @@ const OrderReviewPayment = () => {
 
   const subtotal = cart.reduce((acc,el)=> acc + el.unityPrice, 0);
 
- //HACER VARIABLE PARA PONER EL TOTAL. 
-  
     return (
       <div className="order-review row g-3 pt-2 mt-5">
         <h4 className="pb-4">Resumen Compra</h4>

@@ -2,8 +2,22 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import "../assets/Style.css";
+import { NavLink } from 'react-router-dom';
 
 const RequestInfo = () => {
+
+  const [user, setUser] = useState({
+    name: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    address: ''
+  });
+
+  const [errorMessages, setErrorMessages] = useState({
+    departament:'',
+    city: ''
+  });
 
   const [selectedDepartment, setSelectedDepartment] = useState('');
   const [selectedCity, setSelectedCity] = useState('');
@@ -87,6 +101,7 @@ const RequestInfo = () => {
     fetchUserData();
   }, []);
 
+  
   return (
     <>
       <div className="data_container">
@@ -94,11 +109,14 @@ const RequestInfo = () => {
           <h4>Información del envío</h4>
           <div className="col-md-6">
             <label htmlFor="inputNames4" className="form-label htmlFor"></label>
-            <input
+            <input              
               type="name"
+              name= "name"
+              value={user.name}
               className="form-control"
               id="inputNames4"
               placeholder="Nombre"
+              readOnly
             />
           </div>
           <div className="col-md-6">
@@ -108,21 +126,12 @@ const RequestInfo = () => {
             ></label>
             <input
               type="name"
+              name="lastName"
+              value={user.lastName}
               className="form-control"
               id="inputLastName4"
               placeholder="Apellidos"
-            />
-          </div>
-          <div className="col-md-6">
-            <label
-              htmlFor="inputIndicative"
-              className="form-label htmlFor"              
-            ></label>
-            <input
-              type="number"
-              className="form-control"
-              id="inputIndicative"
-              placeholder="+57"
+              readOnly
             />
           </div>
 
@@ -130,9 +139,12 @@ const RequestInfo = () => {
             <label htmlFor="inputPhone" className="form-label htmlFor"></label>
             <input
               type="number"
+              name="phone"
+              value={user.phone}
               className="form-control"
               id="inputPhone"
               placeholder="Teléfono"
+              readOnly
             />
           </div>
 
@@ -143,6 +155,7 @@ const RequestInfo = () => {
               onChange={handleDepartmentChange}
               id="departmentSelect" 
               className="form-control"
+              required
             > 
               <option disabled value="">Seleccionar Departamento</option>
               {departments.map(department => (
@@ -158,6 +171,7 @@ const RequestInfo = () => {
               onChange={handleCityChange}
               id="citySelect" 
               className="form-control"
+              required
             >
               <option disabled value="">Seleccionar Ciudad</option>
               {selectedDepartment && departments.find(dep => dep.name === selectedDepartment).cities.map(city => (
@@ -199,21 +213,12 @@ const RequestInfo = () => {
             ></label>
             <input
               type="text"
+              name="address"
+              value={user.address}
               className="form-control"
               id="inputAddress2"
               placeholder="Dirección"
-            />
-          </div>
-          <div className="col-12">
-            <label
-              htmlFor="inputAddress2"
-              className="form-label htmlFor"
-            ></label>
-            <input
-              type="text"
-              className="form-control"
-              id="inputAddress2"
-              placeholder="Agregar instrucciones específicas (opcional)"
+              readOnly
             />
           </div>
           </div>
@@ -225,6 +230,11 @@ const RequestInfo = () => {
               Guardar datos
             </button>
           </div>
+          <NavLink to='/user/profile'>
+            <button type="button" className="btn btn-primary">
+              Editar dirección
+            </button>
+           </NavLink>
         </form>
       </div>
     </>

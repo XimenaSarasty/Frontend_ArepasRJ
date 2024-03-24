@@ -116,6 +116,7 @@ const FeeShipment = () => {
           onChange={handleDepartmentChange}
           id="departmentSelect" 
           className="custom-select"
+          required
         > 
           <option disabled value="">Seleccionar Departamento</option>
           {departments.map(department => (
@@ -131,6 +132,7 @@ const FeeShipment = () => {
           onChange={handleCityChange}
           id="citySelect" 
           className="custom-select"
+          required
         >
           <option disabled value="">Seleccionar Ciudad</option>
           {selectedDepartment && departments.find(dep => dep.name === selectedDepartment).cities.map(city => (
@@ -168,6 +170,7 @@ const FeeShipment = () => {
           id="priceInput"
           className="custom-select form-control"
           placeholder="Ingrese el precio del domicilio"
+          required
         />
       </div>
       <div className="domibt col-md-12 mb-4">
