@@ -38,7 +38,6 @@ const Login = () => {
       if (typeof responseText === "string") {
         const welcomeMessage = responseText.split("tu token es: ")[0];
         const token = responseText.split("tu token es: ")[1];
-        console.log(welcomeMessage);
         Cookies.set('token', token); 
 
         if (token && token.length > 0) {

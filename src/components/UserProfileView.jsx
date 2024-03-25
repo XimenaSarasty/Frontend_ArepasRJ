@@ -89,7 +89,7 @@ const handleSave = async (e) => {
       throw new Error('No se ha encontrado un token de autenticación.');
     }
 
-    await axios.put(`http://localhost:8080/api/update/${user.id}`, user, {
+    await axios.put(`http://localhost:8080/api/update/${user.email}`, user, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`

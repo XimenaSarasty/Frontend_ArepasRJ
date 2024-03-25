@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import "../assets/Style.css";
 import { NavLink } from 'react-router-dom';
+import { shoppingContext } from "../context/shoppingContext";
 
 const RequestInfo = () => {
+  const [ shipment, setShipment ] = useState([]);
 
   const [user, setUser] = useState({
     name: '',
@@ -14,14 +16,16 @@ const RequestInfo = () => {
     address: ''
   });
 
-  const [errorMessages, setErrorMessages] = useState({
-    departament:'',
-    city: ''
-  });
+  const {
+    selectedDepartment,
+    selectedCity,
+    selectedMunicipality,
+    setSelectedDepartment,
+    setSelectedCity,
+    setSelectedMunicipality,
+  } = useContext(shoppingContext);
 
-  const [selectedDepartment, setSelectedDepartment] = useState('');
-  const [selectedCity, setSelectedCity] = useState('');
-  const [selectedMunicipality, setSelectedMunicipality] = useState('');
+  
   const [showCitySelect, setShowCitySelect] = useState(false);
   const [showMunicipalitySelect, setShowMunicipalitySelect] = useState(false);
 
@@ -67,6 +71,7 @@ const RequestInfo = () => {
     setSelectedMunicipality('');
     setShowCitySelect(true);
     setShowMunicipalitySelect(false);
+    setShipment({handleCityChange});
   };
 
   const handleCityChange = (event) => {
@@ -74,10 +79,12 @@ const RequestInfo = () => {
     setSelectedCity(selected);
     setSelectedMunicipality('');
     setShowMunicipalitySelect(selected === 'Medellin');
+    setShipment({handleCityChange});
   };
 
   const handleMunicipalityChange = (event) => {
     setSelectedMunicipality(event.target.value);
+    setShipment({handleMunicipalityChange});
   };
 
   useEffect(() => {
@@ -88,20 +95,19 @@ const RequestInfo = () => {
           const response = await axios.get('http://localhost:8080/getUser', {
             headers: {
               'Content-Type': 'application/json',
-              Authorization: `Bearer ${token}` // Usa el token directamente
+              Authorization: `Bearer ${token}` 
             }
           });
-          const userData = response.data; // Asegúrate de que los datos recibidos coincidan con la estructura del estado inicial
-          setUser(userData); // Actualiza el estado con los datos del usuario
+          const userData = response.data; 
+          setUser(userData); 
         } catch (error) {
-          console.error('Error al obtener los datos del usuario:', error);          
+          console.error('Error al obtener los datos del usuario:', error);
         }
       }
     };
     fetchUserData();
   }, []);
 
-  
   return (
     <>
       <div className="data_container">
@@ -109,7 +115,7 @@ const RequestInfo = () => {
           <h4>Información del envío</h4>
           <div className="col-md-6">
             <label htmlFor="inputNames4" className="form-label htmlFor"></label>
-            <input              
+            <input
               type="name"
               name= "name"
               value={user.name}
@@ -148,15 +154,15 @@ const RequestInfo = () => {
             />
           </div>
 
-          <div className="col-md-6 mb-4"> 
+          <div className="col-md-6 mb-4">
             <label htmlFor="departmentSelect" className="form-label htmlFor"></label>
-            <select 
+            <select
               value={selectedDepartment}
               onChange={handleDepartmentChange}
-              id="departmentSelect" 
+              id="departmentSelect"
               className="form-control"
               required
-            > 
+            >
               <option disabled value="">Seleccionar Departamento</option>
               {departments.map(department => (
                 <option key={department.name}>{department.name}</option>
@@ -166,10 +172,10 @@ const RequestInfo = () => {
 
           <div className={`col-md-6 mb-4 ${showCitySelect ? '' : 'hidden'}`}>
             <label htmlFor="citySelect" className="form-label htmlFor"></label>
-            <select 
+            <select
               value={selectedCity}
               onChange={handleCityChange}
-              id="citySelect" 
+              id="citySelect"
               className="form-control"
               required
             >
@@ -179,15 +185,17 @@ const RequestInfo = () => {
               ))}
             </select>
           </div>
-          
+
           <div className={`col-md-3 mb-4 ${showMunicipalitySelect ? '' : 'hidden'}`}>
             <label htmlFor="municipalitySelect" className="form-label htmlFor"></label>
-              <select 
+              <select                
                 value={selectedMunicipality}
                 onChange={handleMunicipalityChange}
-                id="municipalitySelect" 
+                id="municipalitySelect"
                 className="form-control"
-              > 
+              >
+              <option value="">Seleccione una opción
+              </option>
               <option>
                 Nororiental (Popular, Santa Cruz, Manrique,Aranjuez)
               </option>
@@ -205,7 +213,7 @@ const RequestInfo = () => {
                 Santa Elena)
               </option>
             </select>
-            
+
             <div className="col-12">
             <label
               htmlFor="inputAddress2"
@@ -226,9 +234,6 @@ const RequestInfo = () => {
                     <p>NOTA: Estos mismos datos son los que se usarán para generar la facturación del pedido.</p>
                 </div>
           <div className="col-12 mb-4">
-            <button type="submit" className="btn btn-primary">
-              Guardar datos
-            </button>
           </div>
           <NavLink to='/user/profile'>
             <button type="button" className="btn btn-primary">
@@ -242,165 +247,3 @@ const RequestInfo = () => {
 };
 
 export default RequestInfo;
-
-// CODIGO QUE FUNCIONA, PERO SIN SELECCIONAR DEPARTAMENTO NI CIUDAD
-// import React, { useEffect } from 'react';
-// import axios from 'axios';
-// import Cookies from 'js-cookie';
-
-// const RequestInfo = () => {
-
-//   useEffect(() => {
-//     const fetchUserData = async () => {
-//       const token = Cookies.get('token');
-//       if (token && token.length > 0) {
-//         try {
-//           const response = await axios.get('http://localhost:8080/getUser', {
-//             headers: {
-//               'Content-Type': 'application/json',
-//               Authorization: `Bearer ${token}` // Usa el token directamente
-//             }
-//           });
-//           const userData = response.data; // Asegúrate de que los datos recibidos coincidan con la estructura del estado inicial
-//           setUser(userData); // Actualiza el estado con los datos del usuario
-//         } catch (error) {
-//           console.error('Error al obtener los datos del usuario:', error);          
-//         }
-//       }
-//     };
-//     fetchUserData();
-//   }, []);
-
-//   return (
-//     <>
-//       <div className="data_container">
-//         <form className="request-info row g-3 pt-2">
-//           <h4>Información del envío</h4>
-//           <div className="col-md-6">
-//             <label htmlFor="inputNames4" className="form-label htmlFor"></label>
-//             <input
-//               type="name"
-//               className="form-control"
-//               id="inputNames4"
-//               placeholder="Nombre"
-//             />
-//           </div>
-//           <div className="col-md-6">
-//             <label
-//               htmlFor="inputLastName4"
-//               className="form-label htmlFor"
-//             ></label>
-//             <input
-//               type="name"
-//               className="form-control"
-//               id="inputLastName4"
-//               placeholder="Apellidos"
-//             />
-//           </div>
-//           <div className="col-md-6">
-//             <label
-//               htmlFor="inputIndicative"
-//               className="form-label htmlFor"              
-//             ></label>
-//             <input
-//               type="number"
-//               className="form-control"
-//               id="inputIndicative"
-//               placeholder="+57"
-//             />
-//           </div>
-
-//           <div className="col-md-6">
-//             <label htmlFor="inputPhone" className="form-label htmlFor"></label>
-//             <input
-//               type="number"
-//               className="form-control"
-//               id="inputPhone"
-//               placeholder="Teléfono"
-//             />
-//           </div>
-//           <div className="col-md-6">
-//             <label
-//               htmlFor="inputDepartament"
-//               className="form-label htmlFor"
-//             ></label>
-//             <input
-//               type="text"
-//               className="form-control"
-//               id="inputDepartament"
-//               placeholder="Departamento"
-//             />
-//           </div>
-//           <div className="col-md-6">
-//             <label htmlFor="inputCity" className="form-label htmlFor"></label>
-//             <input
-//               type="text"
-//               className="form-control"
-//               id="inputCity"
-//               placeholder="Ciudad"
-//             />
-//           </div>
-//           <div className="col-md-11 mb-6">
-//             <label htmlFor="inputState" className="form-label htmlFor"></label>
-//             <select
-//               defaultValue="Nororiental (Popular, Santa Cruz, Manrique,Aranjuez)"
-//               id="inputState"
-//               className="form-select"
-//             >
-//               <option>
-//                 Nororiental (Popular, Santa Cruz, Manrique,Aranjuez)
-//               </option>
-//               <option>Noroccidental (Castilla, Doce Octubre, Robledo)</option>
-//               <option>
-//                 Centro Oriental (Villa Hermosa, Buenos Aires, La Candelaria)
-//               </option>
-//               <option>
-//                 Centro Occidental (Laureles-Estadio, La América, San Javier)
-//               </option>
-//               <option>Suroriental (Poblado)</option>
-//               <option>Suroccidental (Guayabal, Belén)</option>
-//               <option>
-//                 Corregimientos (Palmitas, San Cristobal, Altavista, San Antonio,
-//                 Santa Elena)
-//               </option>
-//             </select>
-//             <div className="col-12">
-//             <label
-//               htmlFor="inputAddress2"
-//               className="form-label htmlFor"
-//             ></label>
-//             <input
-//               type="text"
-//               className="form-control"
-//               id="inputAddress2"
-//               placeholder="Dirección"
-//             />
-//           </div>
-//           <div className="col-12">
-//             <label
-//               htmlFor="inputAddress2"
-//               className="form-label htmlFor"
-//             ></label>
-//             <input
-//               type="text"
-//               className="form-control"
-//               id="inputAddress2"
-//               placeholder="Agregar instrucciones específicas (opcional)"
-//             />
-//           </div>
-//           </div>
-//           <div className="note">
-//                     <p>NOTA: Estos mismos datos son los que se usarán para generar la facturación del pedido.</p>
-//                 </div>
-//           <div className="col-12 mb-4">
-//             <button type="submit" className="btn btn-primary">
-//               Guardar datos
-//             </button>
-//           </div>
-//         </form>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default RequestInfo;

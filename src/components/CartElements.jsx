@@ -3,7 +3,7 @@ import { cartContext } from '../context/cartContext';
 
 const CartElements = () => {
   const { cart, setCart } = useContext(cartContext);
-      
+       
   if (cart.length === 0) {
     return <p>El carrito está vacío.</p>;
   }

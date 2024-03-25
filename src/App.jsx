@@ -17,33 +17,36 @@ import EditProduct from "./components/EditProduct.jsx";
 import ShipmentView from "./components/ShipmentView.jsx";
 import Home from "./pages/Home.jsx";
 import PaymentGateway from "./pages/PaymentGateway.jsx";
+import ShoppingProvider from "./context/shoppingContext.jsx";
 
 
 function App() {
   return (
     <>
+      <ShoppingProvider>
         <DataProvider>
-          <BrowserRouter>
-          <Routes>  
-                <Route path='/' element={<Home />} />
-                <Route path='/home/login' element={<HomeLogin />} />
-                <Route path='/login/register' element={<RegisterLogin />} />
-                <Route path='/products' element={<Products />} />  
-                <Route path='/shoppingcart' element={<ShoppingCart />} />
-                <Route path='/admin/new-product' element={<AdmViewNewProd />} />
-                <Route path='/admin/shipment-fee' element={<AdmDomicilio />} />
-                <Route path='/user/profile' element={<ProfileUser/>} />
-                <Route path='/shoppingsummary' element={<ShoppingSummary />} />        
-                <Route path='/admin/adm-order' element={<AdmOrder />} />
-                <Route path='/admin' element={<HomeAdmView />} />    
-                <Route path="/user/user-history" element={<UserHistory />} />
-                <Route path="/user/payment/gateway" element={<PaymentGateway />} />
-                <Route path="/admin/roles" element={<RolesAdmin />} />
-                <Route path="/admin/:id/edit-prod" element={<EditProduct />} />   
-                <Route path="/admin/shipmentView" element={<ShipmentView />} />             
-            </Routes>
-          </BrowserRouter>
-        </DataProvider>
+            <BrowserRouter>
+            <Routes>  
+                  <Route path='/' element={<Home />} />
+                  <Route path='/home/login' element={<HomeLogin />} />
+                  <Route path='/login/register' element={<RegisterLogin />} />
+                  <Route path='/products' element={<Products />} />  
+                  <Route path='/shoppingcart' element={<ShoppingCart />} />
+                  <Route path='/admin/new-product' element={<AdmViewNewProd />} />
+                  <Route path='/admin/shipment-fee' element={<AdmDomicilio />} />
+                  <Route path='/user/profile' element={<ProfileUser/>} />
+                  <Route path='/shoppingsummary' element={<ShoppingSummary />} />        
+                  <Route path='/admin/adm-order' element={<AdmOrder />} />
+                  <Route path='/admin' element={<HomeAdmView />} />    
+                  <Route path="/user/user-history" element={<UserHistory />} />
+                  <Route path="/user/payment/gateway" element={<PaymentGateway />} />
+                  <Route path="/admin/roles" element={<RolesAdmin />} />
+                  <Route path="/admin/:id/edit-prod" element={<EditProduct />} />   
+                  <Route path="/admin/shipmentView" element={<ShipmentView />} />             
+              </Routes>
+            </BrowserRouter>
+          </DataProvider>
+        </ShoppingProvider>
     </>
   ) 
 }
