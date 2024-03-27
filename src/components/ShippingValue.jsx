@@ -62,7 +62,7 @@ const ShippingValue = ({ onUpdateShippingPrice }) => {
       if (selectedShipment) {
           onUpdateShippingPrice(selectedShipment.deliveryPrice);
       } else {
-          console.log('No se encontró información de envío para los parámetros seleccionados.');
+          alert('No se encontró información de envío para los parámetros seleccionados.');
       }
   };
  

@@ -8,16 +8,13 @@ const CartElements = () => {
     return <p>El carrito está vacío.</p>;
   }
 
-  // Estado local para almacenar los productos y sus cantidades
-  const [productMap, setProductMap] = useState(() => {
+   const [productMap, setProductMap] = useState(() => {
     const initialProductMap = {};
     cart.forEach((product) => {
       if (product.idProduct in initialProductMap) {
-        // Si el producto ya existe en el mapa, incrementamos la cantidad y el precio total
         initialProductMap[product.idProduct].productQuantity += 1;
         initialProductMap[product.idProduct].totalPrice += product.unityPrice;
       } else {
-        // Si el producto no existe en el mapa, lo agregamos con una cantidad de 1
         initialProductMap[product.idProduct] = {
           ...product,
           productQuantity: 1,
@@ -34,8 +31,6 @@ const CartElements = () => {
       delete updatedProductMap[productId];
       return updatedProductMap;
     });
-
-    // Actualizar el carrito global eliminando el producto
     setCart(prevCart => prevCart.filter(product => product.idProduct !== productId));
   };
 
