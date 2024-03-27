@@ -7,17 +7,14 @@ import "../assets/Style.css";
 
 const EditProduct = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
 
     const [products, setProducts] = useState({
-        name: "",
-        description: "",
-        price: "",
-        image: ""
-    });
-
-    const [errors, setErrors] = useState({});
-
-    const navigate = useNavigate();
+        productName: "", 
+        productDescription: "", 
+        unityPrice: "", 
+        imageFile: null 
+    });    
 
     useEffect(() => {
         if (id) {
@@ -31,7 +28,7 @@ const EditProduct = () => {
             };
             fetchProducts();
         }
-    }, []);
+    }, [id]);
 
     const handleChange = (e) => {
         if (e.target.name === 'image') {
@@ -43,31 +40,17 @@ const EditProduct = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const errors = {};
-        if (!products.name) {
-            errors.name = 'Este campo es obligatorio';
-        }
-        if (!products.description) {
-            errors.description = 'Este campo es obligatorio';
-        }
-        if (!products.price) {
-            errors.price = 'Este campo es obligatorio';
-        }
-        if (Object.keys(errors).length > 0) {
-            setErrors(errors);
-            return;
-        }
-
+    
         try {
-            const formData = new FormData();
-            formData.append('productName', products.name);
-            formData.append('productDescription', products.description);
-            formData.append('unityPrice', products.price);
+            const formData = new FormData(); 
+            formData.append('productName', products.productName);
+            formData.append('productDescription', products.productDescription);
+            formData.append('unityPrice', products.unityPrice);
             if (products.imageFile) {
                 formData.append('imageFile', products.imageFile);
             }
-
-            var url = `http://localhost:8080/api/updateProduct/${id}`;
+    
+            const url = `http://localhost:8080/api/updateProduct/${id}`;
             await axios.put(url, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
@@ -79,6 +62,7 @@ const EditProduct = () => {
             console.log(error.response.data.message);
         }
     };
+    
 
     return (
         <div className="allin">
@@ -90,7 +74,6 @@ const EditProduct = () => {
                         className="card-img-top"
                         alt="producto" />
                 </div>
-
                 <form onSubmit={handleSubmit}>
                     <div className='form-group'>
                         <label className='image-label' htmlFor="image">Imagén del Producto:</label>
@@ -98,23 +81,20 @@ const EditProduct = () => {
                     </div>
 
                     <div className='form-group'>
-                        <label className='name-label' htmlFor="name">Nombre del Producto: <span className="required">*</span></label>
-                        <input className={`name-input ${errors.name && 'error'}`} type="text" id="name" name="name" placeholder={products.productName} onChange={handleChange} />
-                        {errors.name && <p className="error-message">{errors.name}</p>}
+                        <label className='name-label' htmlFor="name">Nombre del Producto:</label>
+                        <input type="text" id="name" name="productName" value={products.productName} onChange={handleChange} />
                     </div>
 
                     <div className='form-group'>
-                        <label className='description-label' htmlFor="description">Descripción: <span className="required">*</span></label>
-                        <textarea className={`description-input ${errors.description && 'error'}`} id="description" name="description" rows="4" cols="50" placeholder={products.productDescription} onChange={handleChange}></textarea>
-                        {errors.description && <p className="error-message">{errors.description}</p>}
+                        <label className='description-label' htmlFor="description">Descripción:</label>
+                        <textarea id="description" name="productDescription" rows="4" cols="50" value={products.productDescription} onChange={handleChange}></textarea>
                     </div>
 
                     <div className='form-group'>
-                        <label className='price-label' htmlFor="price">Precio Unitario: <span className="required">*</span></label>
-                        <input className={`price-input ${errors.price && 'error'}`} type="number" id="price" name="price" min="0" step="0.01" placeholder={products.unityPrice} onChange={handleChange} />
-                        {errors.price && <p className="error-message">{errors.price}</p>}
-                        <button className='btn btn-primary' type="submit">{id ? 'Editar' : 'Guardar'}</button>
+                        <label className='price-label' htmlFor="price">Precio Unitario:</label>
+                        <input type="number" id="price" name="unityPrice" min="0" step="0.01" value={products.unityPrice} onChange={handleChange} />
                     </div>
+                    <button className='btn btn-primary' type="submit">{id ? 'Editar' : 'Guardar'}</button>
                 </form>
                 <NavLink to={'/admin'}>
                     <button className='btn btn-danger'>Cancelar edición</button>

@@ -283,6 +283,12 @@ font-size:small;
   margin-top: 40px;
 }
 
+.actions{
+  display: flex; 
+  justify-content:end;
+  margin-top: -40px;
+} 
+  
 
   /*Footer*/
 .footerdm {

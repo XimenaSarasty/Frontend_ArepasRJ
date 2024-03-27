@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import MUIDataTable from 'mui-datatables';
 
-const Products = ({ filteredProducts }) => {
+const Products = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -28,53 +29,69 @@ const Products = ({ filteredProducts }) => {
     }
   };
 
+    const columns = [ 
+        {
+            name:"idProduct",
+            label:"id"
+        },
+        {
+            name: "productName", 
+            label: "Nombre"
+        },
+        {
+            name: "productDescription",
+            label: "Descripción"
+        },
+        {
+            name: "unityPrice",
+            label: "Precio"
+        }, 
+        {
+            name: "Editar",
+            options: {
+              filter: false,
+              sort: false,
+              empty: true,
+              customBodyRender: (value, tableMeta, updateValue) => {
+                const productId = tableMeta.rowData[0].idProduct;
+                return (
+                  <Link to={`/admin/${tableMeta.rowData[0]}/edit-prod`}>
+                    <button className="btn btn-primary btn-editar">Editar</button>
+                  </Link>
+                );
+              },
+            },
+          },
+          {
+            name: "Eliminar",
+            options: {
+              filter: false,
+              sort: false,
+              empty: true,
+              customBodyRender: (value, tableMeta, updateValue) => {
+                const productId = tableMeta.rowData[0].idProduct;
+                return (
+                  <button
+                    onClick={() => handleDelete(tableMeta.rowData[0])}
+                    className='btn btn-danger'
+                  >
+                    Eliminar
+                  </button>
+                );
+              },
+            },
+          },
+    ]
+
   return (
-    <div className="cartas-container">
-      <div className="row row-cols-1 row-cols-md-4 g-4">
-      {filteredProducts.length > 0 ? (
-          filteredProducts.map((product) => (
-            product.idProduct ? ( 
-            <div key={product.idProduct} className="col">
-              <div className="card">
-                <img
-                  src={`http://localhost:8080/api/imageProduct/${product.idProduct}`}
-                  className="card-img-top"
-                  alt="producto"
-                />
-                <div className="card-body">
-                  <h5 className="card-title">{product.productName}</h5>
-                  <p className="card-text">{product.productDescription}</p>
-                  <h2 className="card-price">${product.unityPrice}</h2>
-                  <div className='btn-edit-delete'>
-                  <Link to={`/admin/${product.idProduct}/edit-prod`}>                 
-                      <button className="btn btn-primary btn-editar">Editar</button> 
-                  </Link>  
-                  <button onClick={() => handleDelete(product.idProduct)} className='btn btn-danger'>Eliminar</button> 
-                  </div>               
-                </div>
-              </div>
-            </div>
-          ) : null
-          ))
-          ) : (
-            products.map((product) => (
-              product.idProduct ? (
-                <div key={product.idProduct} className="col">
-                  <div className="card">
-                    <img src={`http://localhost:8080/api/imageProduct/${product.idProduct}`} className="card-img-top" alt="producto" />
-                    <div className="card-body">
-                      <h5 className="card-title">{product.productName}</h5>
-                      <p className="card-text">{product.productDescription}</p>
-                      <h2 className="card-price">${product.unityPrice}</h2>
-                    </div>
-                  </div>
-                </div>
-              ) : null
-            ))
-          )}
-        </div>
-      </div>
-    );
-  };
+    <div className='container'>
+      <MUIDataTable
+      title={'Productos Agregados'}
+      data = {products}
+      columns={columns}     
+      />
+    </div> 
+   );
+};
 
 export default Products;

@@ -3,18 +3,11 @@ import NavAdm from '../components/NavAdm'
 import CartasinfoAdmin from '../components/CartasInfoAdmin';
 
 const HomeAdmView = () => {
-
-    const [filteredProducts, setFilteredProducts] = useState([]);
-  
-    const handleSearch = (products) => {
-      setFilteredProducts(products); 
-    };
-
     
   return (
     <div>
-      <NavAdm onSearch={handleSearch} />      
-      <CartasinfoAdmin onSearch={handleSearch} filteredProducts={filteredProducts} />
+      <NavAdm />      
+      <CartasinfoAdmin />
     </div>
   )
 }

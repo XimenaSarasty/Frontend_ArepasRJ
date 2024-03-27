@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -34,14 +38,13 @@ const Login = () => {
       if (typeof responseText === "string") {
         const welcomeMessage = responseText.split("tu token es: ")[0];
         const token = responseText.split("tu token es: ")[1];
-        console.log(welcomeMessage);
         Cookies.set('token', token); 
 
         if (token && token.length > 0) {
           if (welcomeMessage.includes('Bienvenido, Administrador')) {
-            window.location.href = "/admin";
+            navigate("/admin");
           } else {
-            window.location.href = "/home/login";
+            navigate("/home/login");
           }
         } else {
           console.log("No se recibió el token");

@@ -4,12 +4,14 @@ import { NavLink } from "react-router-dom";
 import { AddToCartIcon } from '../components/Icons.jsx';
 import Cookies from "js-cookie";
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; 
 
 export const CloseNav = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
-  
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -29,14 +31,14 @@ export const CloseNav = ({ onSearch }) => {
     const confirmed = window.confirm('¿Estás seguro de que quieres cerrar la sesión?');
     if (confirmed) {
       Cookies.remove('token');
-      window.location.href = '/';
+      navigate('/');
     }
   };
   
   return (
     <header className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
-        <NavLink to="/" className="navbar-brand">
+        <NavLink to="/home/login" className="navbar-brand">
           <img className="logo" src={logo} alt="Logo" />
         </NavLink>
         
@@ -54,7 +56,7 @@ export const CloseNav = ({ onSearch }) => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav me-auto mb-3 mb-lg-0">
             <li className="nav-item">
-              <NavLink to="/products" className="nav-link bold-text">
+              <NavLink to="/home/login" className="nav-link bold-text">
               Nuestros Productos
               </NavLink>
             </li>
